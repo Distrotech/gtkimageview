@@ -1,0 +1,73 @@
+######################################################################
+##### Setup stuff ####################################################
+######################################################################
+AC_PREREQ(2.53)
+
+AC_INIT(gtkimageview, 1.6.4)
+AC_CONFIG_SRCDIR([src/gtkimageview.h])
+
+# foreign makes it so I don't need stupid NEWS, INSTALL, etc files.
+AM_INIT_AUTOMAKE([foreign])
+
+######################################################################
+##### Check for different programs ###################################
+######################################################################
+
+AC_PROG_CC
+AC_PROG_INSTALL
+AM_PROG_LIBTOOL
+
+# Initialize GNOME environment
+GNOME_COMMON_INIT
+GNOME_COMPILE_WARNINGS(error)
+DEPRECATED_FLAGS="-DG_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED"
+AC_SUBST(DEPRECATED_FLAGS)
+
+PKG_CHECK_MODULES(DEP,
+    gtk+-2.0 >= 2.18.0)
+AC_SUBST(DEP_CFLAGS)
+AC_SUBST(DEP_LIBS)
+
+# Check for glib utils
+AC_PATH_PROG(GLIB_GENMARSHAL, glib-genmarshal)
+AC_PATH_PROG(GLIB_MKENUMS, glib-mkenums)
+
+# 1.8 introduced the --rebuild-sections and --rebuild-types options to
+# 1.gtkdoc-scan that we need.
+GTK_DOC_CHECK([1.8])
+
+######################################################################
+##### Twiddle CFLAGS #################################################
+######################################################################
+if test "x$GCC" = "xyes"; then
+   CFLAGS="${CFLAGS} -Wall -Werror -std=c99 -Wmissing-prototypes"
+fi
+
+
+######################################################################
+##### Output files ###################################################
+######################################################################
+AC_CONFIG_FILES([
+gtkimageview.pc
+Makefile
+docs/Makefile
+docs/reference/Makefile
+src/Makefile
+tests/Makefile
+tests/testlib/Makefile
+])
+
+AC_OUTPUT
+
+echo "
+
+Configuration:
+
+        Source code location:   ${srcdir}
+        Compiler:               ${CC}
+        CFLAGS:                 ${CFLAGS}
+
+
+"
+
+

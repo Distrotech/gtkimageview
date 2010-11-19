@@ -1,0 +1,116 @@
+#! /usr/bin/env python
+# encoding: utf-8
+
+obj = bld.new_task_gen('cc', 'shlib')
+
+# Can't use a glob expression here because automake might put
+# generated files in the src directory.
+obj.source = ['cursors.c',
+              'gdkpixbufdrawcache.c',
+              'gtkanimview.c',
+              'gtkiimagecairoshaper.c',
+              'gtkiimagetool.c',
+              'gtkimagenav.c',
+              'gtkimagescrollwin.c',
+              'gtkimagetoolcairo.c',
+              'gtkimagetooldragger.c',
+              'gtkimagetoolpainter.c',
+              'gtkimagetoolselector.c',
+              'gtkimageview.c',
+              'gtkzooms.c',
+              'mouse_handler.c',
+              'utils.c']
+obj.target = 'gtkimageview'
+obj.uselib = 'GTK'
+obj.export_incdirs = '.'
+obj.defines = 'PACKAGE_VERSION="%s"' % bld.env['PACKAGE_VERSION']
+obj.includes = ['.']
+
+# Add marshal and enums.
+obj.add_marshal_file('gtkimageview-marshal.list', 'gtkimageview_marshal')
+obj.add_enums(source = ['gdkpixbufdrawcache.h',
+                        'gtkimagetoolselector.h',
+                        'gtkimageview.h'],
+              target = 'gtkimageview-typebuiltins.c',
+              file_head = ('#include "gtkimageview.h"\n'
+                           '#include "gtkimagetoolselector.h"\n'
+                           '#include "gtkimageview-typebuiltins.h"\n'),
+              file_prod = '/* enumerations from "@filename@" */',
+              value_head = ('GType\n'
+                            '@enum_name@_get_type (void)\n'
+                            '{\n'
+                            '  static GType etype = 0;\n'
+                            '  if (etype == 0)  {\n'
+                            '    static const G@Type@Value values[] = {\n'),
+              value_prod =  '      { @VALUENAME@, "@VALUENAME@", "@valuenick@" },',
+              value_tail = ('      { 0, NULL, NULL }\n'
+                            '    };\n'
+                            '    etype = g_@type@_register_static (g_intern_static_string ("@EnumName@"), values);\n'
+                            '  }\n'
+                            '  return etype;\n'
+                            '}\n'))
+
+# Note that two invocations of glib-mkenums is needed here. This is
+# because some enums use the gtk prefix while others use gdk. That is
+# why obj.add_enums() cannot be used for the header file but can be
+# used for the c file.
+
+rule = '''
+echo "#ifndef __GTKIMAGEVIEW_TYPEBUILTINS_H__\n"                    \
+"#define __GTKIMAGEVIEW_TYPEBUILTINS_H__\n"                         \
+"G_BEGIN_DECLS" > ${TGT[0].abspath(env)} &&                         \
+${GLIB_MKENUMS}                                                     \
+--fprod "/* enumerations from \"@filename@\" */"                    \
+--vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n"         \
+--vhead "#define GDK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n"   \
+../src/gdk*.h >> ${TGT[0].abspath(env)} &&                          \
+${GLIB_MKENUMS}                                                     \
+--fprod "/* enumerations from \"@filename@\" */"                    \
+--vhead "GType @enum_name@_get_type (void) G_GNUC_CONST;\n"         \
+--vhead "#define GTK_TYPE_@ENUMSHORT@ (@enum_name@_get_type())\n"   \
+../src/gtk*.h >> ${TGT[0].abspath(env)} &&                          \
+echo "G_END_DECLS\n"                                                \
+     "#endif" >> ${TGT[0].abspath(env)}
+'''
+includedir = '${PREFIX}/include/' + bld.env['PACKAGE_NAME']
+bld.new_task_gen(
+    name = 'glib-mkenums-header',
+    target = 'gtkimageview-typebuiltins.h',
+    rule = rule,
+    before = 'glib_genmarshal',
+    install_path = includedir)
+
+headers = ['gdkpixbufdrawcache.h',
+           'gtkimageview.h',
+           'gtkanimview.h',
+           'gtkiimagecairoshaper.h',
+           'gtkiimagetool.h',
+           'gtkimagescrollwin.h',
+           'gtkimagetoolcairo.h',
+           'gtkimagetooldragger.h',
+           'gtkimagetoolpainter.h',
+           'gtkimagetoolselector.h',
+           'gtkimagenav.h',
+           'gtkzooms.h',
+           'cursors.h',
+           'mouse_handler.h',
+           'utils.h']
+bld.install_files(includedir, headers)
+
+
+sgml_names = ['gtkimageview.sgml',
+              'compiling.sgml',
+              'dirstructure.sgml',
+              'releasehistory.sgml',
+              'sourcecode.sgml']
+
+image_names = ['gtkimageview-in-window.png',
+               'ex-monitor-selection.png',
+               'ex-mini.png',
+               'big-zoom-sel-bug.png',
+               'navwin-open.png']
+
+docobj = bld.new_task_gen(features = 'gtkdoc')
+docobj.library = obj
+docobj.sgml_files = ['../docs/reference/' + n for n in sgml_names]
+docobj.image_files = ['../docs/reference/images/' + n for n in image_names]
