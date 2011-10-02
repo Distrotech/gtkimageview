@@ -7,8 +7,6 @@
   <name xml:lang="en">GtkImageView</name>
   <shortdesc xml:lang="en">Simple image viewer widget for gtk+.</shortdesc>
   <homepage rdf:resource="http://trac.bjourne.webfactional.com/" />
-  <category rdf:resource="http://api.gnome.org/doap-extensions#other" />
-
   <maintainer>
     <foaf:Person>
       <foaf:name>Björn Lindqvist</foaf:name>
