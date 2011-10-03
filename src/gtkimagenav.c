@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; coding: utf-8 -*- 
  *
- * Copyright © 2007-2010 Björn Lindqvist <bjourne@gmail.com>
+ * Copyright © 2007-2011 Björn Lindqvist <bjourne@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -206,7 +206,6 @@ static int
 gtk_image_nav_key_press (GtkWidget   *widget,
                          GdkEventKey *ev)
 {
-    printf ("gtk_image_nav_key_press\n");
     GtkImageNav *nav = GTK_IMAGE_NAV (widget);
     int retval = gtk_bindings_activate (GTK_OBJECT (nav->view),
                                         ev->keyval,
@@ -219,7 +218,6 @@ static int
 gtk_image_nav_motion_notify (GtkWidget      *widget,
 							 GdkEventMotion *ev)
 {
-    printf ("gtk_image_nav_motion_notify\n");
     GtkImageNav *nav = GTK_IMAGE_NAV (widget);
     GdkWindow *window = gtk_widget_get_window (widget);
 	int mx, my;

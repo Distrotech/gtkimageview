@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; coding: utf-8 -*- 
  *
- * Copyright © 2007-2009 Björn Lindqvist <bjourne@gmail.com>
+ * Copyright © 2007-2011 Björn Lindqvist <bjourne@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -360,7 +360,9 @@ G_DEFINE_TYPE (GtkImageView, gtk_image_view, GTK_TYPE_WIDGET);
 static int
 gtk_image_view_get_bg_argb (GtkImageView *view)
 {
-    GdkColor color = GTK_WIDGET (view)->style->bg[GTK_STATE_NORMAL];
+
+    GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (view));
+    GdkColor color = style->bg[GTK_STATE_NORMAL];
     int base = (0xff000000
                 | ((color.red >> 8) << 16)
                 | ((color.green >> 8) << 8)
@@ -383,9 +385,9 @@ gtk_image_view_get_pixbuf_size (GtkImageView *view)
 static Size
 gtk_image_view_get_allocated_size (GtkImageView *view)
 {
-    Size size;
-    size.width = GTK_WIDGET (view)->allocation.width;
-    size.height = GTK_WIDGET (view)->allocation.height;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (GTK_WIDGET (view), &alloc);
+    Size size = {alloc.width, alloc.height};
     return size;
 }
 
@@ -426,14 +428,15 @@ static void
 gtk_image_view_update_cursor (GtkImageView *view)
 {
     GtkWidget *widget = GTK_WIDGET (view);
-    if (!GTK_WIDGET_REALIZED (widget))
+    if (!gtk_widget_get_realized (widget))
         return;
+    GdkWindow *window = gtk_widget_get_window (widget);
     int x, y;
-    gdk_window_get_pointer (widget->window, &x, &y, NULL);
+    gdk_window_get_pointer (window, &x, &y, NULL);
     GdkCursor *cursor = view->void_cursor;
     if (view->show_cursor)
         cursor = gtk_iimage_tool_cursor_at_point (view->tool, x, y);
-    gdk_window_set_cursor (widget->window, cursor);
+    gdk_window_set_cursor (window, cursor);
 }
 
 static void
@@ -441,21 +444,22 @@ gtk_image_view_update_adjustments (GtkImageView *view)
 {
     Size zoomed = gtk_image_view_get_zoomed_size (view);
     Size alloc = gtk_image_view_get_allocated_size (view);
+
+    gtk_adjustment_configure (view->hadj,
+                              view->offset_x,
+                              0.0,
+                              zoomed.width,
+                              20.0,
+                              alloc.width / 2,
+                              alloc.width);
+    gtk_adjustment_configure (view->vadj,
+                              view->offset_y,
+                              0.0,
+                              zoomed.height,
+                              20.0,
+                              alloc.height / 2,
+                              alloc.height);
     
-    view->hadj->lower = 0.0;
-    view->hadj->upper = zoomed.width;
-    view->hadj->value = view->offset_x;
-    view->hadj->step_increment = 20.0;
-    view->hadj->page_increment = alloc.width / 2;
-    view->hadj->page_size = alloc.width;
-
-    view->vadj->lower = 0.0;
-    view->vadj->upper = zoomed.height;
-    view->vadj->value = view->offset_y;
-    view->vadj->step_increment = 20.0;
-    view->vadj->page_increment = alloc.height / 2;
-    view->vadj->page_size = alloc.height;
-
     g_signal_handlers_block_by_data (G_OBJECT (view->hadj), view);
     g_signal_handlers_block_by_data (G_OBJECT (view->vadj), view);
     gtk_adjustment_changed (view->hadj);
@@ -545,13 +549,12 @@ gtk_image_view_draw_background (GtkImageView *view,
                                 Size          alloc)
 {
     GtkWidget *widget = GTK_WIDGET (view);
-    
-    GdkGC *gc = widget->style->bg_gc[GTK_STATE_NORMAL];
+    GtkStyle *style = gtk_widget_get_style (widget);
+    GdkGC *gc = style->bg_gc[GTK_STATE_NORMAL];
     if (view->black_bg)
-        gc = widget->style->black_gc;
+        gc = style->black_gc;
     
-    GdkWindow *window = widget->window;
-    
+    GdkWindow *window = gtk_widget_get_window (widget);
     GdkRectangle borders[4];
     GdkRectangle outer = {0, 0, alloc.width, alloc.height};
     gdk_rectangle_get_rects_around (&outer, image_area, borders);
@@ -574,15 +577,18 @@ static int
 gtk_image_view_repaint_area (GtkImageView *view,
                              GdkRectangle *paint_rect)
 {
+    //printf ("gtk_image_view_repaint_area\n");
     if (view->is_rendering)
+    {
         return FALSE;
+    }
     
     // Do not draw zero size rectangles.
     if (!paint_rect->width || !paint_rect->height)
         return FALSE;
 
     view->is_rendering = TRUE;
-    
+
     // Image area is the area on the widget occupied by the pixbuf. 
     GdkRectangle image_area;
     Size alloc = gtk_image_view_get_allocated_size (view);
@@ -595,12 +601,13 @@ gtk_image_view_repaint_area (GtkImageView *view,
         gtk_image_view_draw_background (view, &image_area, alloc);
     }
     GtkWidget *widget = GTK_WIDGET (view);
+    GdkWindow *window = gtk_widget_get_window (widget);
     if (view->show_frame && view->pixbuf)
     {
-        GdkGC *light_gc = widget->style->light_gc[GTK_STATE_NORMAL];
-        GdkGC *dark_gc = widget->style->dark_gc[GTK_STATE_NORMAL];
-        gdk_window_draw_inset_frame (widget->window, &image_area,
-                                     light_gc, dark_gc);
+        GtkStyle *style = gtk_widget_get_style (widget);
+        GdkGC *light_gc = style->light_gc[GTK_STATE_NORMAL];
+        GdkGC *dark_gc = style->dark_gc[GTK_STATE_NORMAL];
+        gdk_window_draw_inset_frame (window, &image_area, light_gc, dark_gc);
     }
 
     // Paint area is the area on the widget that should be redrawn.
@@ -627,7 +634,7 @@ gtk_image_view_repaint_area (GtkImageView *view,
             view->check_color1,
             view->check_color2
         };
-        gtk_iimage_tool_paint_image (view->tool, &opts, widget->window);
+        gtk_iimage_tool_paint_image (view->tool, &opts, window);
     }
 
     view->is_rendering = FALSE;
@@ -646,8 +653,8 @@ gtk_image_view_fast_scroll (GtkImageView *view,
                             int           delta_x,
                             int           delta_y)
 {
-    GdkDrawable *drawable = GTK_WIDGET (view)->window;
-    
+    //printf ("gtk_image_view_fast_scroll (%d, %d)\n", delta_x, delta_y);
+    GdkDrawable *drawable = gtk_widget_get_window (GTK_WIDGET (view));
     int src_x, src_y;
     int dest_x, dest_y;
     if (delta_x < 0)
@@ -713,18 +720,36 @@ gtk_image_view_fast_scroll (GtkImageView *view,
     };
     gtk_image_view_repaint_area (view, &vert_strip);
 
-    // Here is where we fix the weirdness mentioned above. I do not
-    // really know why it works, but it does!
+    // Here is where we fix the weirdness mentioned above.
+    
+    // The exposed areas are unioned with each other and then
+    // repainted in one go. The api docs states that area compression
+    // is performed automatically, but alas, that does not seem to be
+    // the case.
     GdkEvent *ev;
+    GdkRegion *reg = gdk_region_new ();
     while ((ev = gdk_event_get_graphics_expose (drawable)) != NULL)
     {
         GdkEventExpose *expose = (GdkEventExpose *)ev;
         int exp_count = expose->count;
-        gtk_image_view_repaint_area (view, &expose->area);
+        gdk_region_union_with_rect (reg, &expose->area);
         gdk_event_free (ev);
         if (exp_count == 0)
             break;
     }
+
+    GdkRectangle full;
+    gdk_region_get_clipbox (reg, &full);
+    if (full.x != 0 || full.y != 0 || full.width != 0 || full.height != 0)
+    {
+        // This is a workaround for #660766.
+        int x, y;
+        gdk_window_get_position (drawable, &x, &y);
+        full.x -= x;
+        full.y -= y;
+        gtk_image_view_repaint_area (view, &full);
+    }
+    gdk_region_destroy (reg);
 }
 
 /**
@@ -747,6 +772,7 @@ gtk_image_view_scroll_to (GtkImageView *view,
                           gboolean      set_adjustments,
                           gboolean      invalidate)
 {
+    //printf ("gtk_image_view_scroll_to (%d, %d)\n", offset_x, offset_y);
     gtk_image_view_clamp_offset (view, &offset_x, &offset_y);
 
     int delta_x = offset_x - view->offset_x;
@@ -761,10 +787,11 @@ gtk_image_view_scroll_to (GtkImageView *view,
     view->offset_y = offset_y;
     gtk_image_view_update_cursor (view);
 
-    if (GTK_WIDGET (view)->window)
+    GdkWindow *window = gtk_widget_get_window (GTK_WIDGET (view));
+    if (window)
     {
         if (invalidate)
-            gdk_window_invalidate_rect (GTK_WIDGET (view)->window, NULL, TRUE);
+            gdk_window_invalidate_rect (window, NULL, TRUE);
         else
             gtk_image_view_fast_scroll (view, delta_x, delta_y);
     }
@@ -785,25 +812,33 @@ gtk_image_view_scroll (GtkImageView  *view,
                        GtkScrollType  xscroll,
                        GtkScrollType  yscroll)
 {
+    GtkAdjustment *hadj = view->hadj;
+    GtkAdjustment *vadj = view->vadj;
+
+    gdouble h_step = gtk_adjustment_get_step_increment (hadj);
+    gdouble v_step = gtk_adjustment_get_step_increment (vadj);
+    gdouble h_page = gtk_adjustment_get_page_increment (hadj);
+    gdouble v_page = gtk_adjustment_get_page_increment (vadj);
+
     int xstep = 0;
     if (xscroll == GTK_SCROLL_STEP_LEFT)
-        xstep = -view->hadj->step_increment;
+        xstep = -h_step;
     else if (xscroll == GTK_SCROLL_STEP_RIGHT)
-        xstep = view->hadj->step_increment;
+        xstep = h_step;
     else if (xscroll == GTK_SCROLL_PAGE_LEFT)
-        xstep = -view->hadj->page_increment;
+        xstep = -h_page;
     else if (xscroll == GTK_SCROLL_PAGE_RIGHT)
-        xstep = view->hadj->page_increment;
+        xstep = h_page;
 
     int ystep = 0;
     if (yscroll == GTK_SCROLL_STEP_UP)
-        ystep = -view->vadj->step_increment;
+        ystep = -v_step;
     else if (yscroll == GTK_SCROLL_STEP_DOWN)
-        ystep = view->vadj->step_increment;
+        ystep = v_step;
     else if (yscroll == GTK_SCROLL_PAGE_UP)
-        ystep = -view->vadj->page_increment;
+        ystep = -v_page;
     else if (yscroll == GTK_SCROLL_PAGE_DOWN)
-        ystep = view->vadj->page_increment;
+        ystep = v_page;
     
     gtk_image_view_scroll_to (view,
                               view->offset_x + xstep,
@@ -818,14 +853,16 @@ static void
 gtk_image_view_realize (GtkWidget *widget)
 {
     GtkImageView *view = GTK_IMAGE_VIEW (widget);
-    GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
-    
+    gtk_widget_set_realized (widget, TRUE);
+
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (widget, &alloc);
     GdkWindowAttr attrs;
     attrs.window_type = GDK_WINDOW_CHILD;
-    attrs.x = widget->allocation.x;
-    attrs.y = widget->allocation.y;
-    attrs.width = widget->allocation.width;
-    attrs.height = widget->allocation.height;
+    attrs.x = alloc.x;
+    attrs.y = alloc.y;
+    attrs.width = alloc.width;
+    attrs.height = alloc.height;
     attrs.wclass = GDK_INPUT_OUTPUT;
     attrs.visual = gtk_widget_get_visual (widget);
     attrs.colormap = gtk_widget_get_colormap (widget);
@@ -838,11 +875,17 @@ gtk_image_view_realize (GtkWidget *widget)
                         
     int attr_mask = (GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP);
     GdkWindow *parent = gtk_widget_get_parent_window (widget);
-    widget->window = gdk_window_new (parent, &attrs, attr_mask);
-    gdk_window_set_user_data (widget->window, view);
 
-    widget->style = gtk_style_attach (widget->style, widget->window);
-    gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
+    GdkWindow *window = gdk_window_new (parent, &attrs, attr_mask);
+    gtk_widget_set_window (widget, window);
+    gdk_window_set_user_data (window, view);
+
+    GtkStyle *style = gtk_widget_get_style (widget);
+    style = gtk_style_attach (style, window);
+    gtk_widget_set_style (widget, style);
+    
+    //widget->style = gtk_style_attach (widget->style, window);
+    gtk_style_set_background (style, window, GTK_STATE_NORMAL);
 
     view->void_cursor = cursor_get (CURSOR_VOID);
 
@@ -859,10 +902,10 @@ gtk_image_view_unrealize (GtkWidget *widget)
 
 static void
 gtk_image_view_size_allocate (GtkWidget     *widget,
-                              GtkAllocation *alloc)
+                              GtkAllocation *a)
 {
     GtkImageView *view = GTK_IMAGE_VIEW (widget);
-    widget->allocation = *alloc;
+    gtk_widget_set_allocation (widget, a);
 
     if (view->pixbuf && view->fitting)
         gtk_image_view_zoom_to_fit (view, TRUE);
@@ -871,10 +914,11 @@ gtk_image_view_size_allocate (GtkWidget     *widget,
 
     gtk_image_view_update_adjustments (view);
 
-    if (GTK_WIDGET_REALIZED (widget))
-        gdk_window_move_resize (widget->window,
-                                alloc->x, alloc->y,
-                                alloc->width, alloc->height);
+    if (gtk_widget_get_realized (widget))
+    {
+        GdkWindow *window = gtk_widget_get_window (widget);
+        gdk_window_move_resize (window, a->x, a->y, a->width, a->height);
+    }
 }
 
 static void
@@ -929,7 +973,7 @@ static gboolean
 gtk_image_view_hadj_changed_cb (GtkObject    *adj,
                                 GtkImageView *view)
 {
-    int offset_x = GTK_ADJUSTMENT (adj)->value;
+    int offset_x = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj));
     gtk_image_view_scroll_to (view, offset_x, view->offset_y, FALSE, FALSE);
     return FALSE;
 }
@@ -938,7 +982,7 @@ static gboolean
 gtk_image_view_vadj_changed_cb (GtkObject    *adj,
                                 GtkImageView *view)
 {
-    int offset_y = GTK_ADJUSTMENT (adj)->value;
+    int offset_y = gtk_adjustment_get_value (GTK_ADJUSTMENT (adj));
     gtk_image_view_scroll_to (view, view->offset_x, offset_y, FALSE, FALSE);
     return FALSE;
 }
@@ -1006,7 +1050,8 @@ gtk_image_view_set_scroll_adjustments (GtkImageView  *view,
 static void
 gtk_image_view_init (GtkImageView *view)
 {
-    GTK_WIDGET_SET_FLAGS (view, GTK_CAN_FOCUS);
+    gtk_widget_set_can_focus (GTK_WIDGET (view), TRUE);
+    //GTK_WIDGET_SET_FLAGS (view, GTK_CAN_FOCUS);
 
     view->interp = GDK_INTERP_BILINEAR;
     view->black_bg = FALSE;
@@ -1035,8 +1080,11 @@ gtk_image_view_init (GtkImageView *view)
     gtk_object_sink (GTK_OBJECT (view->vadj));
     
     GtkWidget *widget = (GtkWidget *) view;
-    widget->allocation.width = 0;
-    widget->allocation.height = 0;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (widget, &alloc);
+    alloc.width = 0;
+    alloc.height = 0;
+    gtk_widget_set_allocation (widget, &alloc);
 }
 
 static void
@@ -2014,8 +2062,8 @@ gtk_image_view_set_tool (GtkImageView  *view,
 
     GtkWidget *widget = GTK_WIDGET (view);
     gtk_iimage_tool_pixbuf_changed (tool, TRUE, NULL);
-    
-    if (!GTK_WIDGET_REALIZED (widget))
+
+    if (!gtk_widget_get_realized (widget))
         return;
     gtk_widget_queue_draw (widget);
     gtk_image_view_update_cursor (view);

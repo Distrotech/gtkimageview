@@ -142,7 +142,14 @@ def configure(conf):
     # here.
     if not conf.env['CCFLAGS']:
         conf.env['CCFLAGS'] = ['-g', '-O2']
-    flags = ['-std=c99', '-Wall', '-Werror', '-Wmissing-prototypes']
+    flags = [
+        '-std=c99',
+        '-Wall',
+        '-Werror',
+        '-Wmissing-prototypes',
+        '-DGTK_DISABLE_SINGLE_INCLUDES',
+        '-DGSEAL_ENABLE'
+        ]
     conf.env.append_value('CCFLAGS', flags)
 
 def build(bld):

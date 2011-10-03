@@ -40,7 +40,7 @@ GTK_DOC_CHECK([1.8])
 ##### Twiddle CFLAGS #################################################
 ######################################################################
 if test "x$GCC" = "xyes"; then
-   CFLAGS="${CFLAGS} -Wall -Werror -std=c99 -Wmissing-prototypes"
+   CFLAGS="${CFLAGS} -Wall -Werror -std=c99 -Wmissing-prototypes -DGTK_DISABLE_SINGLE_INCLUDES -DGSEAL_ENABLE"
 fi
 
 

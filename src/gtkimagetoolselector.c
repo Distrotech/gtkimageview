@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; coding: utf-8 -*- 
  *
- * Copyright © 2007-2008 Björn Lindqvist <bjourne@gmail.com>
+ * Copyright © 2007-2011 Björn Lindqvist <bjourne@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -330,7 +330,8 @@ gtk_image_tool_selector_calc_autoscroll (GtkImageToolSelector *selector,
                                          int                  *scroll_y)
 {
     gdouble zoom = gtk_image_view_get_zoom (selector->view);
-    GtkAllocation alloc = GTK_WIDGET (selector->view)->allocation;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (GTK_WIDGET (selector->view), &alloc);
 
     /* Ensure that we atleast scroll something if the mouse is outside
        the widget. */
@@ -570,7 +571,8 @@ paint_image (GtkIImageTool     *tool,
 
     // Draw the selection rectangle.
     GdkGC *rect_gc = gdk_gc_new (drawable);
-    gdk_gc_copy (rect_gc, GTK_WIDGET (selector->view)->style->black_gc);
+    GtkStyle *style = gtk_widget_get_style (GTK_WIDGET (selector->view));
+    gdk_gc_copy (rect_gc, style->black_gc);
     gdk_gc_set_line_attributes (rect_gc, 1,
                                 GDK_LINE_DOUBLE_DASH,
                                 GDK_CAP_BUTT,

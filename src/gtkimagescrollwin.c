@@ -1,6 +1,6 @@
 /* -*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; coding: utf-8 -*- 
  *
- * Copyright © 2007-2008 Björn Lindqvist <bjourne@gmail.com>
+ * Copyright © 2007-2011 Björn Lindqvist <bjourne@gmail.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public License
@@ -157,11 +157,14 @@ gtk_image_scroll_win_adjustment_changed (GtkAdjustment     *adj,
        of pixels that COULD be shown if the scrollbars weren't
        there.
     */
-    int width = GTK_WIDGET(window)->allocation.width;
-    int height = GTK_WIDGET(window)->allocation.height;
+    GtkAllocation alloc;
+    gtk_widget_get_allocation (GTK_WIDGET (window), &alloc);
+
+    gdouble h_upper = gtk_adjustment_get_upper (hadj);
+    gdouble v_upper = gtk_adjustment_get_upper (vadj);
     
-    gboolean hide_hscr = (hadj->upper <= width);
-    gboolean hide_vscr = (vadj->upper <= height);
+    gboolean hide_hscr = (h_upper <= alloc.width);
+    gboolean hide_vscr = (v_upper <= alloc.height);
 
     if (hide_hscr && hide_vscr)
     {
