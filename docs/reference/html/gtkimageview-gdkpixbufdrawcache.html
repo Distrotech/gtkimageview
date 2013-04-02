@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gdkpixbufdrawcache</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="GtkImageView.html" title="GtkImageView">
+<link rel="next" href="gtkimageview-gtkzooms.html" title="gtkzooms">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GtkImageView.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="gtkimageview-gtkzooms.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gtkimageview-gdkpixbufdrawcache.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gtkimageview-gdkpixbufdrawcache.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="gtkimageview-gdkpixbufdrawcache"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gtkimageview-gdkpixbufdrawcache.top_of_page"></a>gdkpixbufdrawcache</span></h2>
+<p>gdkpixbufdrawcache — Cache for drawing scaled pixbufs</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gtkimageview-gdkpixbufdrawcache.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a>;
+                    <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a>;
+enum                <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawMethod" title="enum GdkPixbufDrawMethod">GdkPixbufDrawMethod</a>;
+<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> * <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-new" title="gdk_pixbuf_draw_cache_new ()">gdk_pixbuf_draw_cache_new</a>          (void);
+void                <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-free" title="gdk_pixbuf_draw_cache_free ()">gdk_pixbuf_draw_cache_free</a>          (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> *cache);
+void                <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-invalidate" title="gdk_pixbuf_draw_cache_invalidate ()">gdk_pixbuf_draw_cache_invalidate</a>    (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> *cache);
+void                <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-draw" title="gdk_pixbuf_draw_cache_draw ()">gdk_pixbuf_draw_cache_draw</a>          (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> *cache,
+                                                         <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *opts,
+                                                         GdkDrawable *drawable);
+<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawMethod" title="enum GdkPixbufDrawMethod">GdkPixbufDrawMethod</a>  <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-get-method" title="gdk_pixbuf_draw_cache_get_method ()">gdk_pixbuf_draw_cache_get_method</a>   (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *old,
+                                                         <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *new_);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="gtkimageview-gdkpixbufdrawcache.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  The main object in this file is <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache"><span class="type">GdkPixbufDrawCache</span></a> which provies
+  a cache that should be used by <a class="link" href="GtkIImageTool.html" title="GtkIImageTool"><span class="type">GtkIImageTool</span></a>'s when redrawing
+  the <span class="type">GtkImageView.</span>
+</p>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="gtkimageview-gdkpixbufdrawcache.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="GdkPixbufDrawOpts"></a><h3>GdkPixbufDrawOpts</h3>
+<pre class="programlisting">typedef struct {
+    gdouble        zoom;
+
+    /* Rectangle in zoom-space coordinates of the area to draw. */
+    GdkRectangle   zoom_rect;
+
+    /* Position in widget-space coordinates where to draw. */
+    int            widget_x;
+    int            widget_y;
+       
+    GdkInterpType  interp;
+    GdkPixbuf     *pixbuf;
+
+    /* The two colors to use to draw the checker board. */
+    int            check_color1;
+    int            check_color2;
+} GdkPixbufDrawOpts;
+</pre>
+<p>
+Struct which holds options for how the pixbuf should be
+drawn. Options include such things like the source rectangle in the
+pixbuf to draw, where to draw it, which zoom to use and so on.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GdkPixbufDrawCache"></a><h3>GdkPixbufDrawCache</h3>
+<pre class="programlisting">typedef struct {
+    GdkPixbuf         *last_pixbuf;
+    GdkPixbufDrawOpts  old;
+    int                check_size;
+} GdkPixbufDrawCache;
+</pre>
+<p>
+Cache that ensures fast redraws by storing the last draw
+operation. For example, when resizing a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>, the view
+receives an expose event and must redraw the damaged region. Unless
+fitting is <code class="literal">TRUE</code>, most of the pixels it should draw are indentical
+to the ones drawn the previous time. Redrawing them is wasteful
+because scaling and especially bilinear scaling is very
+slow. Therefore, PixbufDrawCache objectifies the drawing process
+and adds a cache with the last draw from which pixels can be
+fetched.
+</p>
+<p>
+This object is present purely to ensure optimal speed. A
+<a class="link" href="GtkIImageTool.html" title="GtkIImageTool"><span class="type">GtkIImageTool</span></a> that is asked to redraw a part of the image view
+widget could either do it by itself using <code class="function">gdk_pixbuf_scale()</code> and
+<code class="function">gdk_draw_pixbuf()</code>.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GdkPixbufDrawMethod"></a><h3>enum GdkPixbufDrawMethod</h3>
+<pre class="programlisting">typedef enum
+{
+    GDK_PIXBUF_DRAW_METHOD_SCALE = 0,
+    GDK_PIXBUF_DRAW_METHOD_CONTAINS = 1,
+    GDK_PIXBUF_DRAW_METHOD_SCROLL = 2
+} GdkPixbufDrawMethod;
+</pre>
+<p>
+Enumeration constants that determine the proper way to draw the
+next time.
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li>GD_PIXBUF_DRAW_METHOD_SCALE : Scale the area of the
+  pixbuf to draw and put the result in cache. This is the slowest
+  draw method as the whole area to be drawn must be rescaled. It is
+  mostly used when no part of <span class="type">"s"</span> cache is
+  valid.</li>
+<li>GDK_PIXBUF_DRAW_METHOD_CONTAINS : Get the area of the
+  pixbuf to draw from the cache without updating the cache
+  afterwards. Only blitting is needed.</li>
+<li>GDK_PIXBUF_DRAW_METHOD_SCROLL : Partially use the cache
+  and scale the region not cached. The cache is updated with the
+  result.</li>
+</ul></div>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gdk-pixbuf-draw-cache-new"></a><h3>gdk_pixbuf_draw_cache_new ()</h3>
+<pre class="programlisting"><a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> * gdk_pixbuf_draw_cache_new          (void);</pre>
+<p>
+Creates a new pixbuf draw cache.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache"><span class="type">GdkPixbufDrawCache</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gdk-pixbuf-draw-cache-free"></a><h3>gdk_pixbuf_draw_cache_free ()</h3>
+<pre class="programlisting">void                gdk_pixbuf_draw_cache_free          (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> *cache);</pre>
+<p>
+Deallocates a pixbuf draw cache and all its data.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>cache</code></em> :</span></p></td>
+<td> a <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache"><span class="type">GdkPixbufDrawCache</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gdk-pixbuf-draw-cache-invalidate"></a><h3>gdk_pixbuf_draw_cache_invalidate ()</h3>
+<pre class="programlisting">void                gdk_pixbuf_draw_cache_invalidate    (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> *cache);</pre>
+<p>
+Force the pixbuf draw cache to scale the pixbuf at the next draw.
+</p>
+<p>
+GdkPixbufDrawCache tries to minimize the number of scale operations
+needed by caching the last drawn pixbuf. It would be inefficient to
+check the individual pixels inside the pixbuf so it assumes that if
+the memory address of the pixbuf has not changed, then the cache is
+good to use.
+</p>
+<p>
+However, when the image data is modified, this assumtion breaks,
+which is why this method must be used to tell draw cache about it.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>cache</code></em> :</span></p></td>
+<td> a <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache"><span class="type">GdkPixbufDrawCache</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gdk-pixbuf-draw-cache-draw"></a><h3>gdk_pixbuf_draw_cache_draw ()</h3>
+<pre class="programlisting">void                gdk_pixbuf_draw_cache_draw          (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache">GdkPixbufDrawCache</a> *cache,
+                                                         <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *opts,
+                                                         GdkDrawable *drawable);</pre>
+<p>
+Redraws the area specified in the pixbuf draw options in an
+efficient way by using caching.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>cache</code></em> :</span></p></td>
+<td> a <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache" title="GdkPixbufDrawCache"><span class="type">GdkPixbufDrawCache</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>opts</code></em> :</span></p></td>
+<td> the <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts"><span class="type">GdkPixbufDrawOpts</span></a> to use in this draw
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>drawable</code></em> :</span></p></td>
+<td> a <span class="type">GdkDrawable</span> to draw on
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gdk-pixbuf-draw-cache-get-method"></a><h3>gdk_pixbuf_draw_cache_get_method ()</h3>
+<pre class="programlisting"><a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawMethod" title="enum GdkPixbufDrawMethod">GdkPixbufDrawMethod</a>  gdk_pixbuf_draw_cache_get_method   (<a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *old,
+                                                         <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *new_);</pre>
+<p>
+Gets the fastest method to draw the specified draw options.
+<em class="parameter"><code>last_opts</code></em> is assumed to be the last <span class="type">PixbufDrawOpts</span> used and
+<em class="parameter"><code>new_opts</code></em> is the one to use this time.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>old</code></em> :</span></p></td>
+<td> the last draw options used
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>new_</code></em> :</span></p></td>
+<td> the current draw options
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> the best draw method to use to draw
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

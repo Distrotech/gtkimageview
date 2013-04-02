@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Directory structure</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="overview.html" title="Package overview">
+<link rel="prev" href="compiling.html" title="Building GtkImageView">
+<link rel="next" href="sourcecode.html" title="Source code overview">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle">
+<td><a accesskey="p" href="compiling.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="overview.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="sourcecode.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry" lang="en">
+<a name="dirstructure"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">Directory structure</span></h2>
+<p>Directory structure — 
+      How the package is organized.
+    </p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" lang="en">
+<a name="id2705588"></a><p>
+      This chapter describes how the files in the GtkImageView source
+      package are organized. The information is mostly useful to those
+      that want to hack on the code.
+      </p>
+<div class="variablelist">
+<p class="title"><b>Directory and listing</b></p>
+<table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><code class="filename">docs</code></span></p></td>
+<td><p>
+              Directory that contains all reference documentation.
+            </p></td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="filename">tests</code></span></p></td>
+<td>
+<p>
+              This directory contains a test suite for GtkImageView
+              along with some example programs. 
+            </p>
+<p>
+              The <code class="filename">ex-*.c</code> programs are simple
+              example programs that demonstrate how the widget is
+              supposed to be used. 
+            </p>
+<p>
+              <code class="filename">interactive.c</code> is small complete
+              image viewer program that demonstrate most of the
+              features GtkImageView has.
+            </p>
+<p>
+              The file <code class="filename">repo-buildability.py</code> is a
+              Python script that also must be run from the package
+              root directory. It verifies that it is possible to
+              checkout and build GtkImageView.
+            </p>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><code class="filename">src</code></span></p></td>
+<td><p>
+              Source code for the widget.
+            </p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>  
+    </p>
+<div class="refsect2" lang="en">
+<a name="id2754465"></a><h3>Test suite</h3>
+<p>
+        GtkImageView has a test suite which is located in
+        the <code class="filename">tests</code> directory. Each C program file
+        named <code class="filename">test-*.c</code> in that directory is
+        considered part of the test suite. The test suite must
+        first be built before it can be run:
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>$ make check</code></strong><br>
+        </p></div>
+<p>
+        Or when using <a class="ulink" href="" target="_top">waf</a>:
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>$ ./waf build tests</code></strong><br>
+        </p></div>
+<p>  
+        From the project root directory, run the test suite by
+        invoking the <code class="filename">alltests.py</code> Python
+        script. You should see output like this:
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>$ python ./tests/alltests.py</code></strong><br>
+          <strong class="userinput"><code>== test-viewport ==</code></strong><br>
+          <strong class="userinput"><code>test_viewport_when_image_is_completely_visible</code></strong><br>
+          <strong class="userinput"><code>...</code></strong><br>
+          <strong class="userinput"><code>3 tests passed.</code></strong><br>
+        </p></div>
+<p>
+        If waf is used, then the directory where the test binaries are
+        located must be specified.
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>$ python ./tests/alltests.py build/default/tests/</code></strong><br>
+          <strong class="userinput"><code>== test-viewport ==</code></strong><br>
+          <strong class="userinput"><code>test_viewport_when_image_is_completely_visible</code></strong><br>
+          <strong class="userinput"><code>...</code></strong><br>
+          <strong class="userinput"><code>3 tests passed.</code></strong><br>
+        </p></div>
+<p>  
+        All tests should always pass. If some test does not, then
+        there is a bug. GTK-warnings similar to this:
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>(lt-test-scrollwin:27870): Gdk-CRITICAL **: gdk_gc_new: assertion `drawable != NULL' failed</code></strong><br>
+        </p></div>
+<p>
+        should also be treated as test failures unless they are
+        explicitly expected. Due to limitations in GTK, there is no
+        way to make them behave like real test failures.
+      </p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

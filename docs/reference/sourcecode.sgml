@@ -1,0 +1,51 @@
+<refentry id = "sourcecode" revision = "6 May 2007">
+  <refmeta>
+    <refentrytitle>Source code overview</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>Source code overview</refname>
+    <refpurpose>
+      Overview of the source code.
+    </refpurpose>  
+  </refnamediv>
+  <refsect1>
+    <para>
+      This chapter contains important information for those that want
+      to hack on the code.
+    </para>
+    <para>
+      All source code is located in the <filename>src</filename>
+      directory. Each C source code file has a matching header
+      file. The header files are divided into two groups; those that
+      are part of the <emphasis>public API</emphasis> and those that
+      are not. All public API files are named using
+      the <filename>gtk</filename> or <filename>gdk</filename>
+      prefix. Each of them have a corresponding reference page devoted
+      to them in this manual. Although both public and "private"
+      header files are installed, the intention is that client code
+      should only use declarations in the public header files.
+    </para>
+    <para>
+      Both public and private headers are installed because
+      GtkImageView does not use the <ulink url =
+      "http://www.gotw.ca/gotw/028.htm">Pimpl idiom</ulink>. The Pimpl
+      idiom is not currently used because it makes the source code
+      much uglier. That may change in future releases (see <ulink url
+      = "http://trac.bjourne.webfactional.com/ticket/9">ticket
+      9</ulink>).
+    </para>
+    <para>
+      There is no coding standards for this project because there
+      hasn't been any need for one. However, it is my hope that the
+      code is clear an concise enough. :) Each file has an <ulink url
+      = "http://www.gnu.org/software/emacs/">Emacs</ulink> mode line
+      definition at the top which enforces my preferred coding style:
+    </para>
+    <literallayout>
+      <userinput>-*- Mode: C; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; coding: utf-8 -*-</userinput>
+    </literallayout>
+    <para>
+      There is probably some equivalent mode line setting for vim.
+    </para>  
+  </refsect1>  
+</refentry>  

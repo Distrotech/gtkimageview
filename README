@@ -1,0 +1,104 @@
+============
+GtkImageView
+============
+
+Copyright © 2007-2008 Björn Lindqvist <bjourne@gmail.com>
+
+This is the README file for the GtkImageView widget.
+
+GtkImageView is a widget that provides a zoomable and panable view of
+a GdkPixbuf. It is intended to be usable in most types of image
+viewing applications.
+
+Compilation
+===========
+The usual business:
+
+    $ ./configure --prefix=/some/prefix
+    $ make
+    $ make install
+
+You can also use the --enable-gtk-doc configure argument to enable
+building of API documentation.
+
+Alternatively, GtkImageView can be built with waf:
+
+    $ ./waf configure
+    $ ./waf build
+    $ ./waf install
+
+Because GtkImageView uses c99, you must use a version of gcc newer
+than 2.96. The gnome-common module must also be installed.
+
+Todo
+====
+
+* Maybe make rotations work correctly.
+* Implement shifted selection rectangle moving and resizing.
+
+Announcement
+============
+
+(To be posted to the following mailing lists periodically:
+* gnome-announce-list@gnome.org
+* gnome-list@gnome.org
+
+Subject: [ANN] GtkImageView 1.6.4 - Image viewer widget for GTK+
+)
+
+I'm pleased to finally announce GtkImageView 1.6.4!
+
+Description
+-----------
+GtkImageView is a simple image viewer widget for GTK+. Similar to the
+image viewer panes in gThumb or Eye of Gnome. It makes writing image
+viewing and editing applications easy. Among its features are:
+
+* Mouse and keyboard zooming.
+* Scrolling and dragging.
+* Adjustable interpolation.
+* Fullscreen mode.
+* GIF animation support.
+* Ability to make selections.
+* Extensible using a tool system.
+
+Bindings exists for Perl and Python.
+
+Download
+--------
+Check it out from Subversion:
+
+    svn co http://publicsvn.bjourne.webfactional.com/gtkimageview
+
+Or download the latest release tarball:
+
+    http://trac.bjourne.webfactional.com/chrome/common/releases/gtkimageview-1.6.4.tar.gz
+
+API documentation can be found online:
+
+    http://trac.bjourne.webfactional.com/chrome/common/gtkimageview-docs/
+
+Or by browsing to the ./docs/reference/html/index.html file.
+
+Project website: http://trac.bjourne.webfactional.com
+
+Examples
+--------
+Here is the canonical example for using the widget::
+
+    #include <gtkimageview/gtkimagescrollwin.h>
+    #include <gtkimageview/gtkimageview.h>
+    ...
+    GtkWidget *view = gtk_image_view_new ();
+    GtkWidget *scroll = gtk_image_scroll_win_new (GTK_IMAGE_VIEW (view));
+    
+    /* Where "box" is a GtkBox already part of your layout. */
+    gtk_box_pack_start (GTK_BOX (box), scroll, TRUE, TRUE, 0);
+    
+    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file ("someimage.png", NULL);
+    gtk_image_view_set_pixbuf (GTK_IMAGE_VIEW (view), pixbuf, TRUE);
+
+Future
+------
+* Gtk# bindings.
+* Haskell bindings.

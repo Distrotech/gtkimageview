@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkImageToolSelector</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="GtkImageToolDragger.html" title="GtkImageToolDragger">
+<link rel="next" href="GtkImageView.html" title="GtkImageView">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GtkImageToolDragger.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="GtkImageView.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkImageToolSelector.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkImageToolSelector.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkImageToolSelector.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkImageToolSelector.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GtkImageToolSelector.properties" class="shortcut">Properties</a>
+                   | 
+                  <a href="#GtkImageToolSelector.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="GtkImageToolSelector"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkImageToolSelector.top_of_page"></a>GtkImageToolSelector</span></h2>
+<p>GtkImageToolSelector — Image tool for selecting rectangular regions
+<div class="mediaobject" align="center">
+<img src="ex-monitor-selection.png" align="middle"><div class="caption"><span class="emphasis"><em>Screenshot showing a GtkImageToolSelector with an
+    active selection on a GtkImageView</em></span></div>
+</div></p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GtkImageToolSelector.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+enum                <a class="link" href="GtkImageToolSelector.html#HotspotType" title="enum HotspotType">HotspotType</a>;
+                    <a class="link" href="GtkImageToolSelector.html#GtkImageToolSelector-struct" title="GtkImageToolSelector">GtkImageToolSelector</a>;
+<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *     <a class="link" href="GtkImageToolSelector.html#gtk-image-tool-selector-new" title="gtk_image_tool_selector_new ()">gtk_image_tool_selector_new</a>         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageToolSelector.html#gtk-image-tool-selector-get-selection" title="gtk_image_tool_selector_get_selection ()">gtk_image_tool_selector_get_selection</a>
+                                                        (<a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector">GtkImageToolSelector</a> *selector,
+                                                         GdkRectangle *rect);
+void                <a class="link" href="GtkImageToolSelector.html#gtk-image-tool-selector-set-selection" title="gtk_image_tool_selector_set_selection ()">gtk_image_tool_selector_set_selection</a>
+                                                        (<a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector">GtkImageToolSelector</a> *selector,
+                                                         GdkRectangle *rect);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GtkImageToolSelector
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkImageToolSelector implements
+ <a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a>.</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkImageToolSelector.html#GtkImageToolSelector--view" title='The "view" property'>view</a>"                     <a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>*         : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkImageToolSelector.html#GtkImageToolSelector-selection-changed" title='The "selection-changed" signal'>selection-changed</a>"                              : Run Last
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  GtkImageToolSelector is a tool for selecting areas of an image. It
+  is useful for cropping an image, for example. The tool is an
+  implementor of the <a class="link" href="GtkIImageTool.html" title="GtkIImageTool"><span class="type">GtkIImageTool</span></a> inteface which means that it can
+  be plugged into a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> by using the
+  <a class="link" href="GtkImageView.html#gtk-image-view-set-tool" title="gtk_image_view_set_tool ()"><code class="function">gtk_image_view_set_tool()</code></a> method.
+</p>
+<p>
+</p>
+<p>
+  GtkImageToolSelector changes the default display of the
+  GtkImageView. It darkens down the unselected region of the image
+  which provides a nice effect and makes it clearer what part of the
+  image that is currently selected. Unfortunately, this effect is
+  somewhat incompatible with how <a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a> behaves because that
+  widget will show the image without darkening it.
+</p>
+<p>
+</p>
+<p>
+  The tool also changes the default behaviour of the mouse. When a
+  GtkImageToolSelector is set on a GtkImageView, mouse presses do not
+  "grab" the image and you cannot scroll by dragging. Instead mouse
+  presses and dragging is used to resize and move the selection
+  rectangle. When the mouse drags the selection rectangle to the
+  border of the widget, the view autoscrolls which is a convenient way
+  for a user to position the selection.
+</p>
+<p>
+</p>
+<p>
+  Please note that GtkImageToolSelector draws the image in two
+  layers. One darkened and the selection rectangle in normal
+  luminosity. Because it uses two draw operations instead one one like
+  <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger"><span class="type">GtkImageToolDragger</span></a> does, it is significantly slower than that
+  tool. Therefore, it makes sense for a user of this library to set
+  the interpolation to <code class="literal">GDK_INTERP_NEAREST</code> when using this tool to
+  ensure that performance is acceptable to the users of the program.
+</p>
+<p>  
+</p>
+<div class="refsect2" lang="en">
+<a name="id2802226"></a><h3>Zoom bug</h3>
+<p>
+    There is a small bug in GtkImageToolSelector that becomes apparent
+    when the zoom factor is greater than about 30. The edge of the
+    selection rectangle may in that case intersect a pixel:
+  </p>
+<div class="mediaobject" align="center">
+<img src="big-zoom-sel-bug.png" align="middle"><div class="caption"><span class="emphasis"><em>The selection rectangle intersects the border pixel</em></span></div>
+</div>
+<p>
+    The bug is caused by bug <a class="ulink" href="http://bugzilla.gnome.org/show_bug.cgi?id=389832" target="_top">389832</a> in
+    <a class="ulink" href="http://developer.gnome.org/doc/API/2.0/gdk-pixbuf/" target="_top">gdk-pixbuf</a>. There
+    is no way to solve this bug on GtkImageView's level (but if
+    someone knows how, I'd really like to know).
+  </p>
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="HotspotType"></a><h3>enum HotspotType</h3>
+<pre class="programlisting">typedef enum
+{
+    HOTSPOT_INSIDE = 0,
+    HOTSPOT_RESIZE_NORTH_WEST,
+    HOTSPOT_RESIZE_NORTH_EAST,
+    HOTSPOT_RESIZE_SOUTH_WEST,
+    HOTSPOT_RESIZE_SOUTH_EAST,
+    HOTSPOT_RESIZE_NORTH,
+    HOTSPOT_RESIZE_EAST,
+    HOTSPOT_RESIZE_SOUTH,
+    HOTSPOT_RESIZE_WEST,
+    HOTSPOT_OUTSIDE,
+    HOTSPOT_LAST
+} HotspotType;
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageToolSelector-struct"></a><h3>GtkImageToolSelector</h3>
+<pre class="programlisting">typedef struct _GtkImageToolSelector GtkImageToolSelector;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-tool-selector-new"></a><h3>gtk_image_tool_selector_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *     gtk_image_tool_selector_new         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Creates a new selector tool for the specified view with default
+values. The default values are:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc"><li>selection : (0, 0) - [0, 0]</li></ul></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new <a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector"><span class="type">GtkImageToolSelector</span></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-tool-selector-get-selection"></a><h3>gtk_image_tool_selector_get_selection ()</h3>
+<pre class="programlisting">void                gtk_image_tool_selector_get_selection
+                                                        (<a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector">GtkImageToolSelector</a> *selector,
+                                                         GdkRectangle *rect);</pre>
+<p>
+Fills in <em class="parameter"><code>rect</code></em> with the current selection rectangle. If either the
+width or the height of <em class="parameter"><code>rect</code></em> is zero, then nothing is selected and
+the selection should be considered inactive. See
+<a class="link" href="GtkImageToolSelector.html#GtkImageToolSelector-selection-changed" title='The "selection-changed" signal'><span class="type">"selection-changed"</span></a> for an example.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>selector</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector"><span class="type">GtkImageToolSelector</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect</code></em> :</span></p></td>
+<td> a <span class="type">GdkRectangle</span> to fill in with the current selection
+rectangle.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-tool-selector-set-selection"></a><h3>gtk_image_tool_selector_set_selection ()</h3>
+<pre class="programlisting">void                gtk_image_tool_selector_set_selection
+                                                        (<a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector">GtkImageToolSelector</a> *selector,
+                                                         GdkRectangle *rect);</pre>
+<p>
+Sets the selection rectangle for the tool. Setting this attribute
+will cause the widget to immediately repaint itself if its view is
+realized.
+</p>
+<p>
+This method does nothing under the following circumstances:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li>If the views pixbuf is <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>.</li>
+<li>If <em class="parameter"><code>rect</code></em> is wider or taller than the size of the
+  pixbuf</li>
+<li>If <em class="parameter"><code>rect</code></em> equals the current selection
+  rectangle.</li>
+</ul></div>
+<p>
+</p>
+<p>
+If the selection falls outside the pixbufs area, its position is
+moved so that it is within the pixbuf.
+</p>
+<p>
+Calling this method causes the ::selection-changed signal to be
+emitted.
+</p>
+<p>
+The default selection is (0,0) - [0,0].</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>selector</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector"><span class="type">GtkImageToolSelector</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect</code></em> :</span></p></td>
+<td> Selection rectangle in image space coordinates.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageToolSelector--view"></a><h3>The <code class="literal">"view"</code> property</h3>
+<pre class="programlisting">  "view"                     <a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>*         : Write / Construct Only</pre>
+<p>Image View to navigate.</p>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageToolSelector-selection-changed"></a><h3>The <code class="literal">"selection-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector">GtkImageToolSelector</a> *selector,
+                                                        gpointer              user_data)      : Run Last</pre>
+<p>
+The ::selection-changed signal is emitted when the selection
+rectangle on the selector is moved or resized. It is inteded to
+be used by applications that wants to print status
+information. For example:
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+    static void
+    sel_changed_cb (GtkImageToolSelector *selector)
+    {
+        GdkRectangle sel;
+        gtk_image_tool_selector_get_selection (selector, &amp;sel);
+        if (!sel.width || !sel.height)
+            printf ("No selection\n");
+        else
+            printf ("The selection is %d, %d - %d, %d\n",
+                    sel.x, sel.y, sel.width, sel.height);
+    }
+    ...
+    // selector is an already initialized GtkImageToolSelector
+    // object.
+    g_signal_connect (G_OBJECT(selector), "selection_changed",
+                      G_CALLBACK (sel_changed_cb), NULL);
+  </pre></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>selector</code></em> :</span></p></td>
+<td> the selector that emitted the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageToolSelector.see-also"></a><h2>See Also</h2>
+<a class="link" href="GtkIImageTool.html" title="GtkIImageTool"><span class="type">GtkIImageTool</span></a>, <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger"><span class="type">GtkImageToolDragger</span></a>, <a class="link" href="GtkImageView.html#gtk-image-view-set-tool" title="gtk_image_view_set_tool ()"><code class="function">gtk_image_view_set_tool()</code></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

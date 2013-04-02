@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Building GtkImageView</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="overview.html" title="Package overview">
+<link rel="prev" href="overview.html" title="Package overview">
+<link rel="next" href="dirstructure.html" title="Directory structure">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle">
+<td><a accesskey="p" href="overview.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="overview.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="dirstructure.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry" lang="en">
+<a name="compiling"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">Building GtkImageView</span></h2>
+<p>Building GtkImageView — 
+      How to compile and install GtkImageView.
+    </p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" lang="en">
+<a name="id2745044"></a><p>
+      To compile and install GtkImageView, follow these steps:
+      </p>
+<div class="literallayout"><p><br>
+        <strong class="userinput"><code>$ ./configure # Add --enable-gtk-doc to build the documentation</code></strong><br>
+        <strong class="userinput"><code>$ make</code></strong><br>
+        <strong class="userinput"><code>$ make install</code></strong><br>
+      </p></div>
+<p>
+      Optionally, you may want to run <strong class="userinput"><code>make
+      check</code></strong> to build the testsuite. You can verify that
+      installation succeded by running pkg-config:
+      </p>
+<div class="literallayout"><p><br>
+        <strong class="userinput"><code>$ pkg-config --modversion gtkimageview</code></strong><br>
+        <strong class="userinput"><code>1.6.4</code></strong><br>
+      </p></div>
+<p>
+    </p>
+<div class="refsect2" lang="en">
+<a name="id2707081"></a><h3>Building with waf</h3>
+<p>
+        GtkImageView can also be built using the build tool <a class="ulink" href="" target="_top">waf</a>. The waf binary
+        is distributed with GtkImageView, so the only prerequisite to
+        using it is that <a class="ulink" href="" target="_top">Python</a> 2.4 or later is
+        installed. Waf is the offically preferred way to build
+        GtkImageView with, so please try it out. Autotools still works
+        ofcourse.
+      </p>
+<p>
+        These commands builds and installs GtkImageView with waf:
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>$ ./waf configure # Add --enable-gtk-doc to build the documentation</code></strong><br>
+          <strong class="userinput"><code>$ ./waf build</code></strong><br>
+          <strong class="userinput"><code>$ ./waf install</code></strong><br>
+        </p></div>
+<p>
+        The test programs and demos are built by specifying specific
+        build targets to <span class="command"><strong>waf build</strong></span>:
+        </p>
+<div class="literallayout"><p><br>
+          <strong class="userinput"><code>$ ./waf build --demos # Builds demos</code></strong><br>
+          <strong class="userinput"><code>$ ./waf build --tests # Builds tests</code></strong><br>
+        </p></div>
+<p>
+        All the binaries are, by default, placed in
+        the <code class="filename">build/default/tests</code> directory.
+      </p>
+</div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id2705184"></a><h3>Known problems</h3>
+<p>
+      During compilation with GCC version 4.2.1 or newer, you may get
+      errors similar to the following:
+      </p>
+<div class="literallayout"><p><br>
+        <strong class="userinput"><code>$ make</code></strong><br>
+        <strong class="userinput"><code>...</code></strong><br>
+        <strong class="userinput"><code>gutils.h:316: warning: C99 inline functions are not supported; using GNU89</code></strong><br>
+        <strong class="userinput"><code>gutils.h:316: warning: to disable this warning use -fgnu89-inline or the gnu_inline function attribute</code></strong><br>
+      </p></div>
+<p>
+      These warnings are caused by a change in the meaning of
+      the <code class="function">inline</code> keyword in recent versions of
+      GCC. But GLib has not yet adapted to the change. Fortunately,
+      the fix is simple. Invoke configure like this:
+      </p>
+<div class="literallayout"><p><br>
+        <strong class="userinput"><code>$ CFLAGS=-fgnu89-inline ./configure</code></strong><br>
+      </p></div>
+<p>
+      Note that the <code class="option">-fgnu89-inline</code> is only recognized
+      in GCC 4.2.1 and above.
+    </p>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Release history</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="overview.html" title="Package overview">
+<link rel="prev" href="sourcecode.html" title="Source code overview">
+<link rel="next" href="acknowledgements.html" title="Acknowledgements">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2"><tr valign="middle">
+<td><a accesskey="p" href="sourcecode.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="overview.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="acknowledgements.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry" lang="en">
+<a name="releasehistory"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle">Release history</span></h2>
+<p>Release history — 
+      Major changes between versions of GtkImageView.
+    </p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1" lang="en">
+<a name="id2754339"></a><p>
+      This chapter lists all major changes that has occured in
+      GtkImageView. Each version is sorted in reverse chronological
+      order.
+    </p>
+<div class="refsect2" lang="en">
+<a name="id2754347"></a><h3>Major changes in 1.6.4</h3>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          Experimental support for the build tool <a class="ulink" href="http://code.google.com/p/waf/" target="_top">waf</a>.
+        </li>
+<li>
+          Fix test failures when compiling with -O0. See <a class="ulink" href="http://trac.bjourne.webfactional.com/changeset/631" target="_top">r631</a>.
+        </li>
+<li>
+          Ensure that conversions from double to int are performed
+          correctly. Fixes for <a class="ulink" href="http://trac.bjourne.webfactional.com/ticket/31" target="_top">ticket31</a>.
+        </li>
+<li>
+          Clarify
+          what <code class="function">gtk_image_view_get_draw_rect()</code>
+          and <code class="function">gtk_image_view_get_viewport()</code>
+          returns when the view is not allocated.
+        </li>
+</ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755272"></a><h3>Major changes in 1.6.3</h3>
+<div class="itemizedlist"><ul type="disc"><li>
+          Ensure that the header testlib.h is included in distributed
+          tarball. Fixes <a class="ulink" href="http://trac.bjourne.webfactional.com/ticket/30" target="_top">ticket30</a>.
+        </li></ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755293"></a><h3>Major changes in 1.6.2</h3>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          Fix for <a class="ulink" href="http://trac.bjourne.webfactional.com/ticket/23" target="_top">ticket11</a>. The
+          tools mouse motion and button release event handlers should
+          return <code class="constant">TRUE</code> if they handled the event
+          themselves.
+        </li>
+<li>          
+          Fix for <a class="ulink" href="http://trac.bjourne.webfactional.com/ticket/23" target="_top">ticket29</a>. The
+          static image is displayed instead of the first frame of an
+          animation in case that animation only has one frame. This
+          helps make progressive loading work better.
+        </li>
+<li>
+          Fix for <a class="ulink" href="http://trac.bjourne.webfactional.com/ticket/23" target="_top">ticket23</a>. To
+          small zoom factors are disallowed which should prevent the
+          filter matrices to become rediculously large and eat up all
+          memory.
+        </li>
+<li>
+          Horizontal scrolls should not crash GtkImageView anymore.
+        </li>
+<li>
+<code class="function">gtk_image_view_image_to_widget_rect()</code>
+          ceils the size of the output rectangle. See <a class="ulink" href="http://trac.bjourne.webfactional.com/ticket/24#comment:5" target="_top">ticket24</a>.
+        </li>
+</ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755365"></a><h3>Major changes in 1.6.1</h3>
+<p>
+        None, bugfix release only.
+      </p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755376"></a><h3>Major changes in 1.6.0</h3>
+<div class="itemizedlist"><ul type="disc">
+<li>
+<code class="function">gtk_image_view_image_to_widget_rect()</code>
+          was added to <code class="classname">GtkImageView</code>. It is a
+          utility function useful determining where on the widget a
+          certain part of the image is.
+        </li>
+<li>
+          The
+          function <code class="function">gtk_image_view_damage_pixels()</code>
+          was added. It is supposed to be used instead
+          of <code class="function">gtk_image_view_set_pixbuf</code> to mark an
+          area as damaged.
+        </li>
+<li>
+<code class="function">gtk_iimage_tool_pixbuf_changed()</code> got a
+          third argument which is a pointer either to the changed
+          rectangle in the pixbuf or <code class="constant">NULL</code>. This
+          was needed to accomodate for the new pixel damage system.
+        </li>
+<li>
+<code class="classname">ImageViewDrawer</code> was renamed
+          to <code class="classname">GdkPixbufDrawCache</code> and placed in
+          the file <code class="filename">gdkpixbufdrawcache.c</code>. It is
+          now part of the public interface. See its documentation page
+          for more information.
+        </li>
+<li>
+          A new
+          function <code class="function">gtk_image_view_library_version()</code>
+          was added to find out the runtime version of GtkImageView.
+        </li>
+</ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755462"></a><h3>Major changes in 1.5.0</h3>
+<div class="itemizedlist"><ul type="disc">
+<li>
+<code class="function">gtk_image_nav_get_pixbuf()</code> was added
+          to <code class="classname">GtkImageNav</code>. It returns the
+          downsampled pixbuf the navigator is showing
+          or <code class="constant">NULL</code>. The function is mostly useful
+          for testing.
+        </li>
+<li>
+<code class="classname">GtkImageNav</code> aquired a flag variable
+          that controls that the downsampled pixbuf is not created
+          unless necessary. It makes
+          the <code class="classname">GtkImageScrollWin</code> faster to
+          instantiate, but may break ABI.
+        </li>
+</ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755502"></a><h3>Major changes in 1.4.0</h3>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          The
+          function <code class="function">gtk_image_view_get_draw_rect()</code>
+          was added. It is a useful function used by both of the
+          tools.
+        </li>
+<li>
+          The navigator button
+          in <code class="classname">GtkImageScrollWin</code> now has a cute
+          tooltip and the same prelight effect that <a class="ulink" href="http://developer.gnome.org/arch/gnome/corecomponents/panel/" target="_top">gnome-panel</a>
+          has.
+        </li>
+<li>
+          Redraw speed has been improved greatly. In particular,
+          GtkImageToolSelector and redraws caused by moving other
+          windows on top of the widget should now be much quicker.
+        </li>
+<li>
+          Killed
+          the <code class="function">gtk_image_view_set_offset_invalidating()</code>
+          function.
+          Instead, <code class="function">gtk_image_view_set_offset()</code>
+          has a boolean flag which indicates whether to do an
+          invalidating redraw or a fast scroll. This change breaks API
+          and maybe also ABI.
+        </li>
+<li>
+          GtkFitMode was removed along
+          with <code class="function">gtk_image_view_set_fit_mode()</code>
+          and <code class="function">gtk_image_view_get_fit_mode()</code>.
+          Since there were only two items in the enum (fit or not
+          fit), it was much cleaner to just pass a gboolean. The
+          accessor functions has also been renamed
+          to <code class="function">gtk_image_view_set_fitting()</code>
+          and <code class="function">gtk_image_view_get_fit_mode()</code> to
+          reflect this new and simpler interface. This change also
+          breaks API and perhaps even ABI.
+        </li>
+</ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755597"></a><h3>Major changes in 1.3.0</h3>
+<div class="itemizedlist"><ul type="disc">
+<li>
+<p>
+            The <code class="classname">GtkImageView</code> widget has
+            undergone major internal reconstruction work. I wanted to
+            support making rectangular selections on the view
+            area. Selections are useful for many reasons -- selecting,
+            cutting, cropping etc. I want to support exactly the kind
+            of selection tool that gThumb's image crop dialog has.
+          </p>
+<p>
+            To implement this feature GtkImageView has been made
+            extensible via aggregation. It now uses an interface
+            called <code class="interfacename">GtkIImageTool</code> which
+            encapsulats certain behaviour. This means that it will be
+            possible to extend GtkImageView with other tools too, such
+            as drawing tools.
+          </p>
+<p>
+            The feature isn't completed yet, but I'm checking it in
+            anyway to avoid having to check in a super-large changeset
+            at an even later date. See <a class="ulink" href="http://bjourne.blogspot.com/2007/05/tools-for-gtkimageview.html" target="_top">this
+            blog post</a> for even more details.
+          </p>
+<p>
+            There is currently two tools implemented,
+            <code class="classname">GtkImageToolDragger</code> and
+            <code class="classname">GtkImageToolSelector</code>. See their
+            respective manual pages.
+          </p>
+</li>
+<li>
+          The
+          function <code class="function">gtk_image_view_set_offset_invalidating()</code>
+          was added. The function has the same purpose as
+          <code class="function">gtk_image_view_set_offset()</code>, but queues
+          the redraw by invalidating the whole widget instead of
+          immediately repainting. The effect is that superfluous
+          redraws can sometimes be avoided at the expense of more cpu
+          usage.
+        </li>
+</ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755687"></a><h3>Major changes in 1.2.0</h3>
+<div class="itemizedlist"><ul type="disc"><li>
+          The
+          functions <code class="function">gtk_image_view_get_check_colors()</code>
+          and <code class="function">gtk_image_view_set_transp()</code> was
+          added. These additions enable users to define how
+          GtkImageView should render transparent parts of images with
+          an alpha
+          channel. See <code class="filename">./tests/interactive.c</code> for
+          an example.
+        </li></ul></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2755720"></a><h3>Major changes in 1.1.0</h3>
+<div class="itemizedlist"><ul type="disc"><li>
+<p>
+            <code class="function">gtk_image_view_set_pixbuf()</code> was
+            changed to accept three parameters. The third parameter is
+            a <span class="type">gboolean</span> that defines whether to reset fit
+            mode or not. It should almost always be TRUE.
+          </p>
+<p>
+            This change replaces the old (and
+            undocumented) <code class="function">gtk_image_view_set_pixbuf_no_repaint()</code>
+            function.
+          </p>
+</li></ul></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

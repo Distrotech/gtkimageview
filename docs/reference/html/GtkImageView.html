@@ -1,0 +1,1643 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkImageView</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="GtkImageToolSelector.html" title="GtkImageToolSelector">
+<link rel="next" href="gtkimageview-gdkpixbufdrawcache.html" title="gdkpixbufdrawcache">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GtkImageToolSelector.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="gtkimageview-gdkpixbufdrawcache.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkImageView.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkImageView.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkImageView.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkImageView.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GtkImageView.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="GtkImageView"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkImageView.top_of_page"></a>GtkImageView</span></h2>
+<p>GtkImageView — General purpose image viewer for Gtk+
+<div class="mediaobject" align="center">
+<img src="gtkimageview-in-window.png" align="middle"><div class="caption"><span class="emphasis"><em>Screenshot of the <code class="filename">./tests/interactive</code> demo
+    application</em></span></div>
+</div></p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GtkImageView.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+enum                <a class="link" href="GtkImageView.html#GtkImageTransp" title="enum GtkImageTransp">GtkImageTransp</a>;
+                    <a class="link" href="GtkImageView.html#GtkImageView-struct" title="GtkImageView">GtkImageView</a>;
+GtkWidget *         <a class="link" href="GtkImageView.html#gtk-image-view-new" title="gtk_image_view_new ()">gtk_image_view_new</a>                  (void);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-get-viewport" title="gtk_image_view_get_viewport ()">gtk_image_view_get_viewport</a>         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-get-draw-rect" title="gtk_image_view_get_draw_rect ()">gtk_image_view_get_draw_rect</a>        (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-get-check-colors" title="gtk_image_view_get_check_colors ()">gtk_image_view_get_check_colors</a>     (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         int *check_color1,
+                                                         int *check_color2);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-image-to-widget-rect" title="gtk_image_view_image_to_widget_rect ()">gtk_image_view_image_to_widget_rect</a> (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect_in,
+                                                         GdkRectangle *rect_out);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-offset" title="gtk_image_view_set_offset ()">gtk_image_view_set_offset</a>           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gdouble x,
+                                                         gdouble y,
+                                                         gboolean invalidate);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-transp" title="gtk_image_view_set_transp ()">gtk_image_view_set_transp</a>           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         <a class="link" href="GtkImageView.html#GtkImageTransp" title="enum GtkImageTransp">GtkImageTransp</a> transp,
+                                                         int transp_color);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-get-fitting" title="gtk_image_view_get_fitting ()">gtk_image_view_get_fitting</a>          (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-fitting" title="gtk_image_view_set_fitting ()">gtk_image_view_set_fitting</a>          (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean fitting);
+GdkPixbuf *         <a class="link" href="GtkImageView.html#gtk-image-view-get-pixbuf" title="gtk_image_view_get_pixbuf ()">gtk_image_view_get_pixbuf</a>           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-pixbuf" title="gtk_image_view_set_pixbuf ()">gtk_image_view_set_pixbuf</a>           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkPixbuf *pixbuf,
+                                                         gboolean reset_fit);
+gdouble             <a class="link" href="GtkImageView.html#gtk-image-view-get-zoom" title="gtk_image_view_get_zoom ()">gtk_image_view_get_zoom</a>             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-zoom" title="gtk_image_view_set_zoom ()">gtk_image_view_set_zoom</a>             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gdouble zoom);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-black-bg" title="gtk_image_view_set_black_bg ()">gtk_image_view_set_black_bg</a>         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean black_bg);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-get-black-bg" title="gtk_image_view_get_black_bg ()">gtk_image_view_get_black_bg</a>         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-show-frame" title="gtk_image_view_set_show_frame ()">gtk_image_view_set_show_frame</a>       (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean show_frame);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-get-show-frame" title="gtk_image_view_get_show_frame ()">gtk_image_view_get_show_frame</a>       (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-interpolation" title="gtk_image_view_set_interpolation ()">gtk_image_view_set_interpolation</a>    (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkInterpType interp);
+GdkInterpType       <a class="link" href="GtkImageView.html#gtk-image-view-get-interpolation" title="gtk_image_view_get_interpolation ()">gtk_image_view_get_interpolation</a>    (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-show-cursor" title="gtk_image_view_set_show_cursor ()">gtk_image_view_set_show_cursor</a>      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean show_cursor);
+gboolean            <a class="link" href="GtkImageView.html#gtk-image-view-get-show-cursor" title="gtk_image_view_get_show_cursor ()">gtk_image_view_get_show_cursor</a>      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-set-tool" title="gtk_image_view_set_tool ()">gtk_image_view_set_tool</a>             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         <a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool);
+<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *     <a class="link" href="GtkImageView.html#gtk-image-view-get-tool" title="gtk_image_view_get_tool ()">gtk_image_view_get_tool</a>             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-zoom-in" title="gtk_image_view_zoom_in ()">gtk_image_view_zoom_in</a>              (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-zoom-out" title="gtk_image_view_zoom_out ()">gtk_image_view_zoom_out</a>             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+void                <a class="link" href="GtkImageView.html#gtk-image-view-damage-pixels" title="gtk_image_view_damage_pixels ()">gtk_image_view_damage_pixels</a>        (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect);
+const char *        <a class="link" href="GtkImageView.html#gtk-image-view-library-version" title="gtk_image_view_library_version ()">gtk_image_view_library_version</a>      (void);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkObject
+               +----GtkWidget
+                     +----GtkImageView
+                           +----<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a>
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkImageView implements
+ AtkImplementorIface and  GtkBuildable.</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkImageView.html#GtkImageView-mouse-wheel-scroll" title='The "mouse-wheel-scroll" signal'>mouse-wheel-scroll</a>"                             : Run Last
+  "<a class="link" href="GtkImageView.html#GtkImageView-pixbuf-changed" title='The "pixbuf-changed" signal'>pixbuf-changed</a>"                                 : Run Last
+  "<a class="link" href="GtkImageView.html#GtkImageView-scroll" title='The "scroll" signal'>scroll</a>"                                         : Run Last / Action
+  "<a class="link" href="GtkImageView.html#GtkImageView-set-fitting" title='The "set-fitting" signal'>set-fitting</a>"                                    : Run Last / Action
+  "<a class="link" href="GtkImageView.html#GtkImageView-set-scroll-adjustments" title='The "set-scroll-adjustments" signal'>set-scroll-adjustments</a>"                         : Run Last
+  "<a class="link" href="GtkImageView.html#GtkImageView-set-zoom" title='The "set-zoom" signal'>set-zoom</a>"                                       : Run Last / Action
+  "<a class="link" href="GtkImageView.html#GtkImageView-zoom-changed" title='The "zoom-changed" signal'>zoom-changed</a>"                                   : Run Last
+  "<a class="link" href="GtkImageView.html#GtkImageView-zoom-in" title='The "zoom-in" signal'>zoom-in</a>"                                        : Run Last / Action
+  "<a class="link" href="GtkImageView.html#GtkImageView-zoom-out" title='The "zoom-out" signal'>zoom-out</a>"                                       : Run Last / Action
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  GtkImageView is a full-featured general purpose image viewer
+  widget for GTK. It provides a scrollable, zoomable pane in which
+  a pixbuf can be displayed.
+</p>
+<p>
+</p>
+<div class="refsect2" lang="en">
+<a name="id2803855"></a><h3>Keybindings</h3>
+<p>
+    When focused, GtkImageView responds to the following keybindings:
+    </p>
+<table width="100%" border="0" id="id2803864">
+<thead><tr>
+          <th>Keys</th>
+          <th>Corresponding function</th>
+          <th>Description</th>
+        </tr></thead>
+<tbody>
+<tr>
+          <td>
+<code class="literal">GDK_KP_Add</code>, <code class="literal">GDK_equal</code>, <code class="literal">GDK_plus</code>
+</td>
+          <td><a class="link" href="GtkImageView.html#gtk-image-view-zoom-in" title="gtk_image_view_zoom_in ()"><code class="function">gtk_image_view_zoom_in()</code></a></td>
+          <td>Causes the widget to zoom in one step.</td>
+        </tr>
+<tr>
+          <td>
+<code class="literal">GDK_KP_Subtract</code>, <code class="literal">GDK_minus</code>
+</td>
+          <td><a class="link" href="GtkImageView.html#gtk-image-view-zoom-out" title="gtk_image_view_zoom_out ()"><code class="function">gtk_image_view_zoom_out()</code></a></td>
+          <td>Causes the widget to zoom out one step.</td>
+        </tr>
+<tr>
+          <td><code class="literal">GDK_1</code></td>
+          <td><a class="link" href="GtkImageView.html#gtk-image-view-set-zoom" title="gtk_image_view_set_zoom ()"><code class="function">gtk_image_view_set_zoom()</code></a></td>
+          <td>Sets zoom to 100%.</td>
+        </tr>
+<tr>
+          <td><code class="literal">GDK_2</code></td>
+          <td><a class="link" href="GtkImageView.html#gtk-image-view-set-zoom" title="gtk_image_view_set_zoom ()"><code class="function">gtk_image_view_set_zoom()</code></a></td>
+          <td>Sets zoom to 200%.</td>
+        </tr>
+<tr>
+          <td><code class="literal">GDK_3</code></td>
+          <td><a class="link" href="GtkImageView.html#gtk-image-view-set-zoom" title="gtk_image_view_set_zoom ()"><code class="function">gtk_image_view_set_zoom()</code></a></td>
+          <td>Sets zoom to 300%.</td>
+        </tr>
+<tr>
+          <td><code class="literal">GDK_x</code></td>
+          <td><a class="link" href="GtkImageView.html#gtk-image-view-set-fitting" title="gtk_image_view_set_fitting ()"><code class="function">gtk_image_view_set_fitting()</code></a></td>
+          <td>Sets fitting to <code class="literal">TRUE</code> so that the whole pixbuf
+          becomes visible.</td>
+        </tr>
+<tr>
+          <td>
+<code class="literal">GDK_Page_Up</code>, <code class="literal">GDK_Up</code> + <code class="literal">GDK_SHIFT_MASK</code>
+</td>
+          <td></td>
+          <td>Scroll the view half a page upwards.</td>
+        </tr>
+<tr>
+          <td>
+<code class="literal">GDK_Page_Down</code>, <code class="literal">GDK_Down</code> + <code class="literal">GDK_SHIFT_MASK</code>
+</td>
+          <td></td>
+          <td>Scroll the view half a page downwards.</td>
+        </tr>
+<tr>
+          <td>
+<code class="literal">GDK_Left</code> + <code class="literal">GDK_SHIFT_MASK</code>
+</td>
+          <td></td>
+          <td>Scroll the view half a page leftwards.</td>
+        </tr>
+<tr>
+          <td>
+<code class="literal">GDK_Right</code> + <code class="literal">GDK_SHIFT_MASK</code>
+</td>
+          <td></td>
+          <td>Scroll the view half a page rightwards.</td>
+        </tr>
+</tbody>
+</table>
+<p> 
+  </p>
+</div>
+<p>
+</p>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2804240"></a><h3>Mouse actions</h3>
+<p>
+    When focused, GtkImageView responds to the following mouse
+    actions:
+  </p>
+<table width="100%" border="0" id="id2804252">
+<thead><tr>
+          <th>Mouse gesture</th>
+          <th>Description</th>
+        </tr></thead>
+<tbody><tr>
+          <td>Mouse wheel scroll + <code class="literal">GDK_CONTROL_MASK</code>
+</td>
+          <td>Increase or decrease the zoom of the view depending on
+          the direction of the scroll.</td>
+        </tr></tbody>
+</table>
+</div>
+<p>
+</p>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2804300"></a><h3>Coordinate systems</h3>
+<p>
+    Operations on GtkImageView are executed in three different
+    2D coordinate systems:
+  </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+      Image coordinates: each coordinate represents a pixel in the
+      image. The range of valid coordinates goes
+      from <span class="emphasis"><em>(0,0)-(p.w,p.h)</em></span>,
+      where <span class="emphasis"><em>p.w</em></span> and <span class="emphasis"><em>p.h</em></span>
+      is the width and height of the image.
+    </li>
+<li>
+      Widget coordinates: each coordinate represents a pixel in the
+      image view widgets coordinate system. The range of valid
+      coordinates goes from <span class="emphasis"><em>(0,0)-(a.w,a.h)</em></span>
+      where <span class="emphasis"><em>a.w</em></span> and <span class="emphasis"><em>a.h</em></span> is
+      the allocated width and height of the widget. Naturally, these
+      coordinates are only valid for as long as the widget is
+      realized.
+    </li>
+<li>
+      Zoom coordinates: this coordinate system is the most frequently
+      used coordinate system in GtkImageView. The range of valid
+      coordinates goes from <span class="emphasis"><em>(0,0)-z(p.w,p.h)</em></span>
+      where <span class="emphasis"><em>p.w</em></span> and <span class="emphasis"><em>p.h</em></span> is
+      the width and height of the image and <span class="emphasis"><em>z</em></span> is
+      the current zoom of the view. In other words, this coordinate
+      system is simply the image coordinate system scaled.
+    </li>
+</ul></div>
+</div>
+<p>
+</p>
+<hr>
+<div class="refsect2" lang="en">
+<a name="id2804379"></a><h3>Settings</h3>
+<p>
+    GtkImageView has a few settings that can be configured by users of
+    the library. For example, when showing transparent images it may
+    in certain cases be better to draw alpha transparent parts using
+    the widgets background color instead of the default checkerboard:
+    </p>
+<div class="informalexample"><pre class="programlisting">
+        gtk_image_view_set_transp (GTK_IMAGE_VIEW (view),
+                                   GTK_IMAGE_TRANSP_COLOR,
+                                   0x00000000);
+      </pre></div>
+<p>
+    When the window that is showing the widget is fullscreened, other
+    settings has to be tweaked to make the view look as good as
+    possible:
+    </p>
+<div class="informalexample"><pre class="programlisting">
+        gtk_image_view_set_show_cursor (GTK_IMAGE_VIEW (view), FALSE);
+        gtk_image_view_set_show_frame (GTK_IMAGE_VIEW (view), FALSE);
+        gtk_image_view_set_black_bg (GTK_IMAGE_VIEW (view), TRUE);
+      </pre></div>
+<p>
+    Naturally, you should reset these settings again when the view
+    leaves fullscreen mode.
+  </p>
+<p>
+    GtkImageView aggresively caches the scaled image data. This
+    behaviour is most often beneficial and makes the widget very
+    fast. For example, try opening a very large image (4000x2000
+    pixels or so) in GtkImageView. The widget will spend some time
+    bilinearly scaling the image at the start. Then try minimizing
+    and unminimizing the window. The image will reappear immedately
+    because the view has cached it.
+  </p>
+<p>
+    However, this feature means that a client application must
+    signal to the view when it changes the pixels on the pixbuf the
+    view shows. The right way to do that is to use the
+    <a class="link" href="GtkImageView.html#gtk-image-view-damage-pixels" title="gtk_image_view_damage_pixels ()"><code class="function">gtk_image_view_damage_pixels()</code></a> function. Code that merely tries
+    to update the view by requesting that it should be redrawn will
+    not work.
+  </p>
+<div class="informalexample"><pre class="programlisting">
+      // Do some operation on the pixbuf data here
+      gtk_widget_queue_draw_area (10, 10, 50, 50) // Incorrect!
+    </pre></div>
+</div>
+<p>
+</p>
+<div class="refsect1" lang="en">
+<a name="id2804470"></a><h2>Example</h2>
+<p>
+    This is the minimal code needed for using GtkImageView. 
+  </p>
+<div class="informalexample"><pre class="programlisting">
+#include &lt;gtkimageview/gtkimageview.h&gt;
+int
+main (int argc, char *argv[])
+{
+    gtk_init (&amp;argc, &amp;argv);
+    GtkWidget *window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    GtkWidget *view = gtk_image_view_new ();
+    GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file ("tests/gnome_logo.jpg", NULL);
+
+    gtk_image_view_set_pixbuf (GTK_IMAGE_VIEW (view), pixbuf, TRUE);
+    gtk_container_add (GTK_CONTAINER (window), view);
+    gtk_widget_show_all (window);
+    gtk_main ();
+}
+    </pre></div>
+<p>
+    Compile and run with:
+  </p>
+<div class="informalexample"><pre class="programlisting">
+$ gcc -o minimal minimal.c `pkg-config --cflags --libs gtkimageview`
+$ ./minimal
+    </pre></div>
+<p>
+    The result should look something like the following:
+  </p>
+<div class="mediaobject" align="center"><img src="ex-mini.png" align="middle"></div>
+<p>
+    Note that because the example doesn't use <a class="link" href="GtkImageScrollWin.html" title="GtkImageScrollWin"><span class="type">GtkImageScrollWin</span></a> many
+    nice features aren't available.
+  </p>
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageTransp"></a><h3>enum GtkImageTransp</h3>
+<pre class="programlisting">typedef enum
+{
+    GTK_IMAGE_TRANSP_COLOR = 0,
+    GTK_IMAGE_TRANSP_BACKGROUND,
+    GTK_IMAGE_TRANSP_GRID
+} GtkImageTransp;
+</pre>
+<p>
+This enum defines the valid transparency settings for how the image
+view should draw transparent parts of alpha images. Their primary
+use is as a value for the first parameter to the
+<a class="link" href="GtkImageView.html#gtk-image-view-set-transp" title="gtk_image_view_set_transp ()"><code class="function">gtk_image_view_set_transp()</code></a> method.
+</p>
+<p>
+Their interpretation is as follows:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li>GTK_IMAGE_TRANSP_COLOR : Use a single color.</li>
+<li>GTK_IMAGE_TRANSP_BACKGROUND : Use the background color
+  of the widget</li>
+<li>GTK_IMAGE_TRANSP_GRID : Use light and dark gray
+  checkerboard pattern.</li>
+</ul></div>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-struct"></a><h3>GtkImageView</h3>
+<pre class="programlisting">typedef struct _GtkImageView GtkImageView;</pre>
+<p>
+GtkImageView is the main class in the library. All of its fields
+are private, they are only shown here for completeness. Use
+<a class="link" href="GtkImageView.html#gtk-image-view-new" title="gtk_image_view_new ()"><code class="function">gtk_image_view_new()</code></a> to instantiate GtkImageView objects.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-new"></a><h3>gtk_image_view_new ()</h3>
+<pre class="programlisting">GtkWidget *         gtk_image_view_new                  (void);</pre>
+<p>
+Creates a new image view with default values. The default values
+are:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li>black bg : <code class="literal">FALSE</code>
+</li>
+<li>fitting : <code class="literal">TRUE</code>
+</li>
+<li>image tool : a <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger"><span class="type">GtkImageToolDragger</span></a> instance</li>
+<li>interpolation mode : <code class="literal">GDK_INTERP_BILINEAR</code>
+</li>
+<li>offset : (0, 0)</li>
+<li>pixbuf : <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</li>
+<li>show cursor: <code class="literal">TRUE</code>
+</li>
+<li>show frame : <code class="literal">TRUE</code>
+</li>
+<li>transp : <span class="type">GTK_IMAGE_TRANSP_GRID</span>
+</li>
+<li>zoom : 1.0</li>
+</ul></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new <span class="type">GtkImageView.</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-viewport"></a><h3>gtk_image_view_get_viewport ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_get_viewport         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect);</pre>
+<p>
+Fills in the rectangle with the current viewport. If pixbuf is
+<a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>, there is no viewport, <em class="parameter"><code>rect</code></em> is left untouched and <code class="literal">FALSE</code> is
+returned. If the view is not allocated, the rectangles coordinates
+are set to the views offset and its width and height to zero.
+</p>
+<p>
+The current viewport is defined as the rectangle, in zoomspace
+coordinates as the area of the loaded pixbuf the <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> is
+currently showing.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect</code></em> :</span></p></td>
+<td> a <span class="type">GdkRectangle</span> to fill in with the current viewport or
+  <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if a <span class="type">GdkPixbuf</span> is shown, <code class="literal">FALSE</code> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-draw-rect"></a><h3>gtk_image_view_get_draw_rect ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_get_draw_rect        (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect);</pre>
+<p>
+Get the rectangle in the widget where the pixbuf is painted. 
+</p>
+<p>
+For example, if the widgets allocated size is 100, 100 and the
+pixbufs size is 50, 50 and the zoom factor is 1.0, then the pixbuf
+will be drawn centered on the widget. <em class="parameter"><code>rect</code></em> will then be
+(25,25)-[50,50].
+</p>
+<p>
+If the view is not allocated, then the rectangle will be set to
+(0,0)-[0,0] and <code class="literal">TRUE</code> is returned.
+</p>
+<p>
+This method is useful when converting from widget to image or zoom
+space coordinates.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect</code></em> :</span></p></td>
+<td> a <span class="type">GdkRectangle</span> to fill in with the area of the widget in
+  which the pixbuf is drawn.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the view has a pixbuf, <code class="literal">FALSE</code> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-check-colors"></a><h3>gtk_image_view_get_check_colors ()</h3>
+<pre class="programlisting">void                gtk_image_view_get_check_colors     (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         int *check_color1,
+                                                         int *check_color2);</pre>
+<p>
+Reads the two colors used to draw transparent parts of images with
+an alpha channel. Note that if the <em class="parameter"><code>transp</code></em> setting of the view is
+<code class="literal">GTK_IMAGE_TRANSP_BACKGROUND</code> or <code class="literal">GTK_IMAGE_TRANSP_COLOR</code>, then both
+colors will be equal.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>check_color1</code></em> :</span></p></td>
+<td> A pointer to an integer where the first check color
+  should be stored.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>check_color2</code></em> :</span></p></td>
+<td> A pointer to an integer wherer the second check
+  color should be stored.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-image-to-widget-rect"></a><h3>gtk_image_view_image_to_widget_rect ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_image_to_widget_rect (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect_in,
+                                                         GdkRectangle *rect_out);</pre>
+<p>
+Convert a rectangle in image space coordinates to widget space
+coordinates. If the view is not realized, or if it contains no
+pixbuf, then the conversion was unsuccessful, <code class="literal">FALSE</code> is returned
+and <em class="parameter"><code>rect_out</code></em> is left unmodified.
+</p>
+<p>
+The size of <em class="parameter"><code>rect_out</code></em> is rounded up. For example, if the zoom
+factor is 0.25 and the width of the input rectangle is 2, then its
+with in widget space coordinates is 0.5 which is rounded up to 1.
+</p>
+<p>
+Note that this function may return a rectangle that is not visible
+on the widget.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect_in</code></em> :</span></p></td>
+<td> a <span class="type">GdkRectangle</span> in image space coordinates to convert
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect_out</code></em> :</span></p></td>
+<td> a <span class="type">GdkRectangle</span> to fill in with the widget space
+  coordinates
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the conversion was successful, <code class="literal">FALSE</code> otherwise
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-offset"></a><h3>gtk_image_view_set_offset ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_offset           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gdouble x,
+                                                         gdouble y,
+                                                         gboolean invalidate);</pre>
+<p>
+Sets the offset of where in the image the <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> should
+begin displaying image data.
+</p>
+<p>
+The offset is clamped so that it will never cause the <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+to display pixels outside the pixbuf. Setting this attribute causes
+the widget to repaint itself if it is realized.
+</p>
+<p>
+If <em class="parameter"><code>invalidate</code></em> is <code class="literal">TRUE</code>, the views entire area will be invalidated
+instead of redrawn immediately. The view is then queued for redraw,
+which means that additional operations can be performed on it
+before it is redrawn.
+</p>
+<p>
+The difference can sometimes be important like when you are
+overlaying data and get flicker or artifacts when setting the
+offset. If that happens, setting <em class="parameter"><code>invalidate</code></em> to <code class="literal">TRUE</code> could fix the
+problem. See the source code to <a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector"><span class="type">GtkImageToolSelector</span></a> for an
+example.
+</p>
+<p>
+Normally, <em class="parameter"><code>invalidate</code></em> should always be <code class="literal">FALSE</code> because it is much
+faster to repaint immedately than invalidating.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
+<td> X-component of the offset in zoom space coordinates.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
+<td> Y-component of the offset in zoom space coordinates.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>invalidate</code></em> :</span></p></td>
+<td> whether to invalidate the view or redraw immediately.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-transp"></a><h3>gtk_image_view_set_transp ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_transp           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         <a class="link" href="GtkImageView.html#GtkImageTransp" title="enum GtkImageTransp">GtkImageTransp</a> transp,
+                                                         int transp_color);</pre>
+<p>
+Sets how the view should draw transparent parts of images with an
+alpha channel. If <em class="parameter"><code>transp</code></em> is <code class="literal">GTK_IMAGE_TRANSP_COLOR</code>, the specified
+color will be used. Otherwise the <em class="parameter"><code>transp_color</code></em> argument is
+ignored. If it is <code class="literal">GTK_IMAGE_TRANSP_BACKGROUND</code>, the background
+color of the widget will be used. If it is <code class="literal">GTK_IMAGE_TRANSP_GRID</code>,
+then a grid with light and dark gray boxes will be drawn on the
+transparent parts.
+</p>
+<p>
+Calling this method causes the widget to immediately repaint. It
+also causes the ::pixbuf-changed signal to be emitted. This is done
+so that other widgets (such as <a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a>) will have a chance to
+render a view of the pixbuf with the new transparency settings.
+</p>
+<p>
+The default values are:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li>transp : <code class="literal">GTK_IMAGE_TRANSP_GRID</code>
+</li>
+<li>transp_color : <code class="literal">0x000000</code>
+</li>
+</ul></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>transp</code></em> :</span></p></td>
+<td> The transparency type to use when drawing transparent
+  images.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>transp_color</code></em> :</span></p></td>
+<td> Color to use when drawing transparent images.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-fitting"></a><h3>gtk_image_view_get_fitting ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_get_fitting          (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Returns the fitting setting of the view.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the view is fitting the image, <code class="literal">FALSE</code> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-fitting"></a><h3>gtk_image_view_set_fitting ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_fitting          (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean fitting);</pre>
+<p>
+Sets whether to fit or not. If <code class="literal">TRUE</code>, then the view will adapt the
+zoom so that the whole pixbuf is visible.
+</p>
+<p>
+Setting the fitting causes the widget to immediately repaint
+itself.
+</p>
+<p>
+Fitting is by default <code class="literal">TRUE</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>fitting</code></em> :</span></p></td>
+<td> whether to fit the image or not
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-pixbuf"></a><h3>gtk_image_view_get_pixbuf ()</h3>
+<pre class="programlisting">GdkPixbuf *         gtk_image_view_get_pixbuf           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Returns the pixbuf this view shows.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The pixbuf this view shows.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-pixbuf"></a><h3>gtk_image_view_set_pixbuf ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_pixbuf           (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkPixbuf *pixbuf,
+                                                         gboolean reset_fit);</pre>
+<p>
+Sets the <em class="parameter"><code>pixbuf</code></em> to display, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> to not display any pixbuf.
+Normally, <em class="parameter"><code>reset_fit</code></em> should be <code class="literal">TRUE</code> which enables fitting. Which
+means that, initially, the whole pixbuf will be shown.
+</p>
+<p>
+Sometimes, the fit mode should not be reset. For example, if
+GtkImageView is showing an animation, it would be bad to reset the
+fit mode for each new frame. The parameter should then be <code class="literal">FALSE</code>
+which leaves the fit mode of the view untouched.
+</p>
+<p>
+This method should not be used if merely the contents of the pixbuf
+has changed. See <a class="link" href="GtkImageView.html#gtk-image-view-damage-pixels" title="gtk_image_view_damage_pixels ()"><code class="function">gtk_image_view_damage_pixels()</code></a> for that.
+</p>
+<p>
+If <em class="parameter"><code>reset_fit</code></em> is <code class="literal">TRUE</code>, the ::zoom-changed signal is emitted,
+otherwise not. The ::pixbuf-changed signal is also emitted.
+</p>
+<p>
+The default pixbuf is <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pixbuf</code></em> :</span></p></td>
+<td> The pixbuf to display.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reset_fit</code></em> :</span></p></td>
+<td> Whether to reset fitting or not.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-zoom"></a><h3>gtk_image_view_get_zoom ()</h3>
+<pre class="programlisting">gdouble             gtk_image_view_get_zoom             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Get the current zoom factor of the view.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> the current zoom factor
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-zoom"></a><h3>gtk_image_view_set_zoom ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_zoom             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gdouble zoom);</pre>
+<p>
+Sets the zoom of the view.
+</p>
+<p>
+Fitting is always disabled after this method has run. The
+::zoom-changed signal is unconditionally emitted.
+</p>
+<p>
+The default value is 1.0.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>zoom</code></em> :</span></p></td>
+<td> the new zoom factor
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-black-bg"></a><h3>gtk_image_view_set_black_bg ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_black_bg         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean black_bg);</pre>
+<p>
+If <code class="literal">TRUE</code>, the view uses a black background. If <code class="literal">FALSE</code>, the view
+uses the default (normally gray) background.
+</p>
+<p>
+The default value is <code class="literal">FALSE</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>black_bg</code></em> :</span></p></td>
+<td> Whether to use a black background or not.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-black-bg"></a><h3>gtk_image_view_get_black_bg ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_get_black_bg         (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Returns whether the view renders the widget on a black background
+or not.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if a black background is used, otherwise <code class="literal">FALSE</code>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-show-frame"></a><h3>gtk_image_view_set_show_frame ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_show_frame       (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean show_frame);</pre>
+<p>
+Sets whether to draw a frame around the image or not. When <code class="literal">TRUE</code>, a
+one pixel wide frame is shown around the image. Setting this
+attribute causes the widget to immediately repaint itself.
+</p>
+<p>
+The default value is <code class="literal">TRUE</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>show_frame</code></em> :</span></p></td>
+<td> whether to show a frame around the pixbuf or not
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-show-frame"></a><h3>gtk_image_view_get_show_frame ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_get_show_frame       (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Returns whether a one pixel frame is drawn around the pixbuf or
+not.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if a frame is drawn around the pixbuf, otherwise
+  <code class="literal">FALSE</code>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-interpolation"></a><h3>gtk_image_view_set_interpolation ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_interpolation    (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkInterpType interp);</pre>
+<p>
+Sets the interpolation mode of how the view. <code class="literal">GDK_INTERP_HYPER</code> is
+the slowest, but produces the best results. <code class="literal">GDK_INTERP_NEAREST</code> is
+the fastest, but provides bad rendering
+quality. <code class="literal">GDK_INTERP_BILINEAR</code> is a good compromise.
+</p>
+<p>
+Setting the interpolation mode causes the widget to immediately
+repaint itself.
+</p>
+<p>
+The default interpolation mode is <code class="literal">GDK_INTERP_BILINEAR</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interp</code></em> :</span></p></td>
+<td> The interpolation to use. One of <code class="literal">GDK_INTERP_NEAREST</code>,
+  <code class="literal">GDK_INTERP_BILINEAR</code> and <code class="literal">GDK_INTERP_HYPER</code>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-interpolation"></a><h3>gtk_image_view_get_interpolation ()</h3>
+<pre class="programlisting">GdkInterpType       gtk_image_view_get_interpolation    (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Returns the current interpolation mode of the view.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> the interpolation
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-show-cursor"></a><h3>gtk_image_view_set_show_cursor ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_show_cursor      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         gboolean show_cursor);</pre>
+<p>
+Sets whether to show the mouse cursor when the mouse is over the
+widget or not. Hiding the cursor is useful when the widget is
+fullscreened.
+</p>
+<p>
+The default value is <code class="literal">TRUE</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>show_cursor</code></em> :</span></p></td>
+<td> whether to show the cursor or not
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-show-cursor"></a><h3>gtk_image_view_get_show_cursor ()</h3>
+<pre class="programlisting">gboolean            gtk_image_view_get_show_cursor      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Returns whether to show the mouse cursor when the mouse is over the
+widget or not.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the cursor is shown, otherwise <code class="literal">FALSE</code>.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-set-tool"></a><h3>gtk_image_view_set_tool ()</h3>
+<pre class="programlisting">void                gtk_image_view_set_tool             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         <a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool);</pre>
+<p>
+Set the image tool to use. If the new tool is the same as the
+current tool, then nothing will be done. Otherwise
+<a class="link" href="GtkIImageTool.html#gtk-iimage-tool-pixbuf-changed" title="gtk_iimage_tool_pixbuf_changed ()"><code class="function">gtk_iimage_tool_pixbuf_changed()</code></a> is called so that the tool has a
+chance to generate initial data for the pixbuf.
+</p>
+<p>
+Setting the tool causes the widget to immediately repaint itself.
+</p>
+<p>
+The default image tool is a <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger"><span class="type">GtkImageToolDragger</span></a> instance. See also
+<span class="type">GtkIImageTool.</span></p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td> The image tool to use (must not be <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>)
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-get-tool"></a><h3>gtk_image_view_get_tool ()</h3>
+<pre class="programlisting"><a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *     gtk_image_view_get_tool             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Gets the image tool <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> uses for rendering and handling
+input events.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> A <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The currently bound image tool
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-zoom-in"></a><h3>gtk_image_view_zoom_in ()</h3>
+<pre class="programlisting">void                gtk_image_view_zoom_in              (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Zoom in the view one step. Calling this method causes the widget to
+immediately repaint itself.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-zoom-out"></a><h3>gtk_image_view_zoom_out ()</h3>
+<pre class="programlisting">void                gtk_image_view_zoom_out             (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Zoom out the view one step. Calling this method causes the widget to
+immediately repaint itself.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-damage-pixels"></a><h3>gtk_image_view_damage_pixels ()</h3>
+<pre class="programlisting">void                gtk_image_view_damage_pixels        (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                         GdkRectangle *rect);</pre>
+<p>
+Mark the pixels in the rectangle as damaged. That the pixels are
+damaged, means that they have been modified and that the view must
+redraw them to ensure that the visible part of the image
+corresponds to the pixels in that image. Calling this method emits
+the ::pixbuf-changed signal.
+</p>
+<p>
+This method must be used when <span class="emphasis"><em>modifying</em></span> the
+image data:
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+    // Drawing something cool in the area 20,20 - 60,60 here...
+    ...
+    // And force an update
+    gtk_image_view_damage_pixels (view, &amp;(GdkRectangle){20, 20, 60, 60});
+  </pre></div>
+<p>
+</p>
+<p>
+If the whole pixbuf has been modified then <em class="parameter"><code>rect</code></em> should be <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> to
+indicate that a total update is needed.
+</p>
+<p>
+See also <a class="link" href="GtkImageView.html#gtk-image-view-set-pixbuf" title="gtk_image_view_set_pixbuf ()"><code class="function">gtk_image_view_set_pixbuf()</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect</code></em> :</span></p></td>
+<td> rectangle in image space coordinates to mark as damaged or
+  <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>, to mark the whole pixbuf as damaged.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-view-library-version"></a><h3>gtk_image_view_library_version ()</h3>
+<pre class="programlisting">const char *        gtk_image_view_library_version      (void);</pre>
+<p>
+Returns a string with the format "major.minor.micro" which denotes
+the runtime version of GtkImageView being used.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a string describing the version of GtkImageView.The
+  returned string is owned by GtkImageView and should not be
+  modified or freed.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-mouse-wheel-scroll"></a><h3>The <code class="literal">"mouse-wheel-scroll"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>      *view,
+                                                        GdkScrollDirection direction,
+                                                        gpointer           user_data)      : Run Last</pre>
+<p>
+The ::mouse-wheel-scroll signal is emitted when the mouse wheel
+is scrolled on the view and <code class="literal">GTK_CONTROL_MASK</code> is
+<span class="emphasis"><em>not</em></span> held down.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> The <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> that emitted the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>direction</code></em> :</span></p></td>
+<td> The direction of the scroll; <code class="literal">GDK_SCROLL_UP</code>,
+  <code class="literal">GDK_SCROLL_DOWN</code>, <code class="literal">GDK_SCROLL_LEFT</code> or <code class="literal">GDK_SCROLL_RIGHT</code>.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-pixbuf-changed"></a><h3>The <code class="literal">"pixbuf-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                        gpointer      user_data)      : Run Last</pre>
+<p>
+The ::pixbuf-changed signal is emitted when the pixbuf the
+image view shows is changed and when its image data is changed.
+Listening to this signal is useful if you, for example, have a
+label that displays the width and height of the pixbuf in the
+view.
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+    // Handler that will be called when the pixbuf changes.
+    static void
+    pixbuf_cb (GtkImageView *view,
+               GtkLabel     *label)
+    {
+        GdkPixbuf *new_pb = gtk_image_view_get_pixbuf (view);
+        if (!new_pb)
+        {
+            // Empty label if no pixbuf.
+            gtk_label_set_text (label, "");
+            return;
+        }
+        int width = gdk_pixbuf_get_width (new_pb);
+        int height = gdk_pixbuf_get_height (new_pb);
+        char *text = g_strdup_printf ("%d, %d", width, height);
+        gtk_label_set_text (label, text);
+        g_free (text);
+    }
+    ...
+    GtkWidget *label = gtk_label_new ("");
+    g_signal_connect (G_OBJECT (view), "pixbuf-changed",
+                      G_CALLBACK (pixbuf_cb), label);
+  </pre></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> The view that emitted the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-scroll"></a><h3>The <code class="literal">"scroll"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                        GtkScrollType xscroll,
+                                                        GtkScrollType yscroll,
+                                                        gpointer      user_data)      : Run Last / Action</pre>
+<p>
+The ::scroll signal is a keybinding signal emitted when a key
+is used to scroll the view. The signal should not be used by
+clients of this library.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> The <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> that received the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>xscroll</code></em> :</span></p></td>
+<td> Horizontal scroll constant.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>yscroll</code></em> :</span></p></td>
+<td> Vertical scroll constant.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-set-fitting"></a><h3>The <code class="literal">"set-fitting"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *imageview,
+                                                        gint          arg1,
+                                                        gpointer      user_data)      : Run Last / Action</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>imageview</code></em> :</span></p></td>
+<td>the object which received the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>arg1</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-set-scroll-adjustments"></a><h3>The <code class="literal">"set-scroll-adjustments"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>  *arg0,
+                                                        GtkAdjustment *arg1,
+                                                        GtkAdjustment *arg2,
+                                                        gpointer       user_data)      : Run Last</pre>
+<p>
+Do we really need this signal? It should be intrinsic to the
+GtkWidget class, shouldn't it?</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-set-zoom"></a><h3>The <code class="literal">"set-zoom"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                        gdouble       zoom,
+                                                        gpointer      user_data)      : Run Last / Action</pre>
+<p>
+The ::set-zoom signal is a keybinding signal emitted when
+<code class="literal">GDK_1</code>, <code class="literal">GDK_2</code> or <code class="literal">GDK_3</code> is pressed on the widget which causes
+the zoom to be set to 100%, 200% or 300%. The signal should not
+be used by clients of this library.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> The <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> that received the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>zoom</code></em> :</span></p></td>
+<td> The new zoom factor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-zoom-changed"></a><h3>The <code class="literal">"zoom-changed"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                        gpointer      user_data)      : Run Last</pre>
+<p>
+The ::zoom-changed signal is emitted when the zoom factor of
+the view changes. Listening to this signal is useful if, for
+example, you have a label that displays the zoom factor of the
+view. Use <a class="link" href="GtkImageView.html#gtk-image-view-get-zoom" title="gtk_image_view_get_zoom ()"><code class="function">gtk_image_view_get_zoom()</code></a> to retrieve the value. For
+example:
+</p>
+<p>
+</p>
+<div class="informalexample"><pre class="programlisting">
+    // Handler that will be called when the zoom changes.
+    static void
+    zoom_cb (GtkImageView *view,
+             GtkLabel     *label)
+    {
+        gdouble zoom = gtk_image_view_get_zoom (view);
+        char *text = g_strdup_printf ("%d%%", (int)(zoom * 100.0));
+        gtk_label_set_text (label, text);
+        g_free (text);
+    }
+    ...
+    // Connect the callback to the signal.
+    GtkWidget *label = gtk_label_new ("100%");
+    g_signal_connect (G_OBJECT (view), "zoom-changed",
+                      G_CALLBACK (zoom_cb), label);
+  </pre></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> The <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> that emitted the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-zoom-in"></a><h3>The <code class="literal">"zoom-in"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *imageview,
+                                                        gpointer      user_data)      : Run Last / Action</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>imageview</code></em> :</span></p></td>
+<td>the object which received the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageView-zoom-out"></a><h3>The <code class="literal">"zoom-out"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view,
+                                                        gpointer      user_data)      : Run Last / Action</pre>
+<p>
+The ::zoom-out signal is a keybinding signal emitted when
+<code class="literal">GDK_minus</code> or <code class="literal">GDK_KP_Subtract</code> is pressed on the widget. The
+signal should not be used by clients of this library.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> The <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> that received the signal.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageView.see-also"></a><h2>See Also</h2>
+<a class="link" href="GtkAnimView.html" title="GtkAnimView"><span class="type">GtkAnimView</span></a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<refentry id = "dirstructure" revision="2 May 2007">
+  <refmeta>
+    <refentrytitle>Directory structure</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>Directory structure</refname>
+    <refpurpose>
+      How the package is organized.
+    </refpurpose>  
+  </refnamediv>
+  <refsect1>
+    <para>
+      This chapter describes how the files in the GtkImageView source
+      package are organized. The information is mostly useful to those
+      that want to hack on the code.
+      <variablelist>
+        <title>Directory and listing</title>
+        <varlistentry>
+          <term><filename>docs</filename></term>
+          <listitem>
+            <para>
+              Directory that contains all reference documentation.
+            </para>  
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><filename>tests</filename></term>
+          <listitem>
+            <para>
+              This directory contains a test suite for GtkImageView
+              along with some example programs. 
+            </para>
+            <para>
+              The <filename>ex-*.c</filename> programs are simple
+              example programs that demonstrate how the widget is
+              supposed to be used. 
+            </para>
+            <para>
+              <filename>interactive.c</filename> is small complete
+              image viewer program that demonstrate most of the
+              features GtkImageView has.
+            </para>
+            <para>
+              The file <filename>repo-buildability.py</filename> is a
+              Python script that also must be run from the package
+              root directory. It verifies that it is possible to
+              checkout and build GtkImageView.
+            </para>  
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><filename>src</filename></term>
+          <listitem>
+            <para>
+              Source code for the widget.
+            </para>  
+          </listitem>  
+        </varlistentry>  
+      </variablelist>  
+    </para>
+    <refsect2>
+      <title>Test suite</title>
+      <para>
+        GtkImageView has a test suite which is located in
+        the <filename>tests</filename> directory. Each C program file
+        named <filename>test-*.c</filename> in that directory is
+        considered part of the test suite. The test suite must
+        first be built before it can be run:
+        <literallayout>
+          <userinput>$ make check</userinput>
+        </literallayout>
+        Or when using <ulink src =
+        "http://code.google.com/p/waf/">waf</ulink>:
+        <literallayout>
+          <userinput>$ ./waf build tests</userinput>
+        </literallayout>  
+        From the project root directory, run the test suite by
+        invoking the <filename>alltests.py</filename> Python
+        script. You should see output like this:
+        <literallayout>
+          <userinput>$ python ./tests/alltests.py</userinput>
+          <userinput>== test-viewport ==</userinput>
+          <userinput>test_viewport_when_image_is_completely_visible</userinput>
+          <userinput>...</userinput>
+          <userinput>3 tests passed.</userinput>
+        </literallayout>
+        If waf is used, then the directory where the test binaries are
+        located must be specified.
+        <literallayout>
+          <userinput>$ python ./tests/alltests.py build/default/tests/</userinput>
+          <userinput>== test-viewport ==</userinput>
+          <userinput>test_viewport_when_image_is_completely_visible</userinput>
+          <userinput>...</userinput>
+          <userinput>3 tests passed.</userinput>
+        </literallayout>  
+        All tests should always pass. If some test does not, then
+        there is a bug. GTK-warnings similar to this:
+        <literallayout>
+          <userinput>(lt-test-scrollwin:27870): Gdk-CRITICAL **: gdk_gc_new: assertion `drawable != NULL' failed</userinput>
+        </literallayout>
+        should also be treated as test failures unless they are
+        explicitly expected. Due to limitations in GTK, there is no
+        way to make them behave like real test failures.
+      </para>  
+    </refsect2>  
+  </refsect1>  
+</refentry>  

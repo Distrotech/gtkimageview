@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE book PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "">
+<book xmlns="http://www.devhelp.net/book" title="GtkImageView Reference Manual" link="index.html" author="" name="gtkimageview">
+  <chapters>
+    <sub name="Package overview" link="overview.html">
+      <sub name="Building GtkImageView" link="compiling.html"/>
+      <sub name="Directory structure" link="dirstructure.html"/>
+      <sub name="Source code overview" link="sourcecode.html"/>
+      <sub name="Release history" link="releasehistory.html"/>
+    </sub>
+    <sub name="Acknowledgements" link="acknowledgements.html"/>
+    <sub name="API reference" link="rn01.html">
+      <sub name="GtkAnimView" link="GtkAnimView.html"/>
+      <sub name="GtkIImageTool" link="GtkIImageTool.html"/>
+      <sub name="GtkImageNav" link="GtkImageNav.html"/>
+      <sub name="GtkImageScrollWin" link="GtkImageScrollWin.html"/>
+      <sub name="GtkImageToolDragger" link="GtkImageToolDragger.html"/>
+      <sub name="GtkImageToolSelector" link="GtkImageToolSelector.html"/>
+      <sub name="GtkImageView" link="GtkImageView.html"/>
+      <sub name="gdkpixbufdrawcache" link="gtkimageview-gdkpixbufdrawcache.html"/>
+      <sub name="gtkzooms" link="gtkimageview-gtkzooms.html"/>
+    </sub>
+  </chapters>
+  <functions>
+    <function name="Building with waf" link="compiling.html#id2707081"/>
+    <function name="Known problems" link="compiling.html#id2705184"/>
+    <function name="Test suite" link="dirstructure.html#id2754465"/>
+    <function name="Major changes in 1.6.4" link="releasehistory.html#id2754347"/>
+    <function name="Major changes in 1.6.3" link="releasehistory.html#id2755272"/>
+    <function name="Major changes in 1.6.2" link="releasehistory.html#id2755293"/>
+    <function name="Major changes in 1.6.1" link="releasehistory.html#id2755365"/>
+    <function name="Major changes in 1.6.0" link="releasehistory.html#id2755376"/>
+    <function name="Major changes in 1.5.0" link="releasehistory.html#id2755462"/>
+    <function name="Major changes in 1.4.0" link="releasehistory.html#id2755502"/>
+    <function name="Major changes in 1.3.0" link="releasehistory.html#id2755597"/>
+    <function name="Major changes in 1.2.0" link="releasehistory.html#id2755687"/>
+    <function name="Major changes in 1.1.0" link="releasehistory.html#id2755720"/>
+    <function name="Keybindings" link="GtkAnimView.html#id2704248"/>
+    <function name="GtkAnimView" link="GtkAnimView.html#GtkAnimView-struct"/>
+    <function name="gtk_anim_view_new ()" link="GtkAnimView.html#gtk-anim-view-new"/>
+    <function name="gtk_anim_view_get_anim ()" link="GtkAnimView.html#gtk-anim-view-get-anim"/>
+    <function name="gtk_anim_view_set_anim ()" link="GtkAnimView.html#gtk-anim-view-set-anim"/>
+    <function name="gtk_anim_view_set_is_playing ()" link="GtkAnimView.html#gtk-anim-view-set-is-playing"/>
+    <function name="gtk_anim_view_get_is_playing ()" link="GtkAnimView.html#gtk-anim-view-get-is-playing"/>
+    <function name="gtk_anim_view_step ()" link="GtkAnimView.html#gtk-anim-view-step"/>
+    <function name="The &quot;step&quot; signal" link="GtkAnimView.html#GtkAnimView-step"/>
+    <function name="The &quot;toggle-running&quot; signal" link="GtkAnimView.html#GtkAnimView-toggle-running"/>
+    <function name="GtkIImageTool" link="GtkIImageTool.html#GtkIImageTool-struct"/>
+    <function name="gtk_iimage_tool_button_press ()" link="GtkIImageTool.html#gtk-iimage-tool-button-press"/>
+    <function name="gtk_iimage_tool_button_release ()" link="GtkIImageTool.html#gtk-iimage-tool-button-release"/>
+    <function name="gtk_iimage_tool_motion_notify ()" link="GtkIImageTool.html#gtk-iimage-tool-motion-notify"/>
+    <function name="gtk_iimage_tool_pixbuf_changed ()" link="GtkIImageTool.html#gtk-iimage-tool-pixbuf-changed"/>
+    <function name="gtk_iimage_tool_paint_image ()" link="GtkIImageTool.html#gtk-iimage-tool-paint-image"/>
+    <function name="gtk_iimage_tool_cursor_at_point ()" link="GtkIImageTool.html#gtk-iimage-tool-cursor-at-point"/>
+    <function name="GTK_IMAGE_NAV_MAX_WIDTH" link="GtkImageNav.html#GTK-IMAGE-NAV-MAX-WIDTH:CAPS"/>
+    <function name="GTK_IMAGE_NAV_MAX_HEIGHT" link="GtkImageNav.html#GTK-IMAGE-NAV-MAX-HEIGHT:CAPS"/>
+    <function name="GtkImageNav" link="GtkImageNav.html#GtkImageNav-struct"/>
+    <function name="gtk_image_nav_new ()" link="GtkImageNav.html#gtk-image-nav-new"/>
+    <function name="gtk_image_nav_get_pixbuf ()" link="GtkImageNav.html#gtk-image-nav-get-pixbuf"/>
+    <function name="gtk_image_nav_grab ()" link="GtkImageNav.html#gtk-image-nav-grab"/>
+    <function name="gtk_image_nav_release ()" link="GtkImageNav.html#gtk-image-nav-release"/>
+    <function name="gtk_image_nav_show_and_grab ()" link="GtkImageNav.html#gtk-image-nav-show-and-grab"/>
+    <function name="The &quot;view&quot; property" link="GtkImageNav.html#GtkImageNav--view"/>
+    <function name="WTF!" link="GtkImageScrollWin.html#id2795038"/>
+    <function name="GtkImageScrollWin" link="GtkImageScrollWin.html#GtkImageScrollWin-struct"/>
+    <function name="gtk_image_scroll_win_new ()" link="GtkImageScrollWin.html#gtk-image-scroll-win-new"/>
+    <function name="The &quot;view&quot; property" link="GtkImageScrollWin.html#GtkImageScrollWin--view"/>
+    <function name="GtkImageToolDragger" link="GtkImageToolDragger.html#GtkImageToolDragger-struct"/>
+    <function name="gtk_image_tool_dragger_new ()" link="GtkImageToolDragger.html#gtk-image-tool-dragger-new"/>
+    <function name="The &quot;view&quot; property" link="GtkImageToolDragger.html#GtkImageToolDragger--view"/>
+    <function name="Zoom bug" link="GtkImageToolSelector.html#id2802226"/>
+    <function name="enum HotspotType" link="GtkImageToolSelector.html#HotspotType"/>
+    <function name="GtkImageToolSelector" link="GtkImageToolSelector.html#GtkImageToolSelector-struct"/>
+    <function name="gtk_image_tool_selector_new ()" link="GtkImageToolSelector.html#gtk-image-tool-selector-new"/>
+    <function name="gtk_image_tool_selector_get_selection ()" link="GtkImageToolSelector.html#gtk-image-tool-selector-get-selection"/>
+    <function name="gtk_image_tool_selector_set_selection ()" link="GtkImageToolSelector.html#gtk-image-tool-selector-set-selection"/>
+    <function name="The &quot;view&quot; property" link="GtkImageToolSelector.html#GtkImageToolSelector--view"/>
+    <function name="The &quot;selection-changed&quot; signal" link="GtkImageToolSelector.html#GtkImageToolSelector-selection-changed"/>
+    <function name="Keybindings" link="GtkImageView.html#id2803855"/>
+    <function name="Mouse actions" link="GtkImageView.html#id2804240"/>
+    <function name="Coordinate systems" link="GtkImageView.html#id2804300"/>
+    <function name="Settings" link="GtkImageView.html#id2804379"/>
+    <function name="enum GtkImageTransp" link="GtkImageView.html#GtkImageTransp"/>
+    <function name="GtkImageView" link="GtkImageView.html#GtkImageView-struct"/>
+    <function name="gtk_image_view_new ()" link="GtkImageView.html#gtk-image-view-new"/>
+    <function name="gtk_image_view_get_viewport ()" link="GtkImageView.html#gtk-image-view-get-viewport"/>
+    <function name="gtk_image_view_get_draw_rect ()" link="GtkImageView.html#gtk-image-view-get-draw-rect"/>
+    <function name="gtk_image_view_get_check_colors ()" link="GtkImageView.html#gtk-image-view-get-check-colors"/>
+    <function name="gtk_image_view_image_to_widget_rect ()" link="GtkImageView.html#gtk-image-view-image-to-widget-rect"/>
+    <function name="gtk_image_view_set_offset ()" link="GtkImageView.html#gtk-image-view-set-offset"/>
+    <function name="gtk_image_view_set_transp ()" link="GtkImageView.html#gtk-image-view-set-transp"/>
+    <function name="gtk_image_view_get_fitting ()" link="GtkImageView.html#gtk-image-view-get-fitting"/>
+    <function name="gtk_image_view_set_fitting ()" link="GtkImageView.html#gtk-image-view-set-fitting"/>
+    <function name="gtk_image_view_get_pixbuf ()" link="GtkImageView.html#gtk-image-view-get-pixbuf"/>
+    <function name="gtk_image_view_set_pixbuf ()" link="GtkImageView.html#gtk-image-view-set-pixbuf"/>
+    <function name="gtk_image_view_get_zoom ()" link="GtkImageView.html#gtk-image-view-get-zoom"/>
+    <function name="gtk_image_view_set_zoom ()" link="GtkImageView.html#gtk-image-view-set-zoom"/>
+    <function name="gtk_image_view_set_black_bg ()" link="GtkImageView.html#gtk-image-view-set-black-bg"/>
+    <function name="gtk_image_view_get_black_bg ()" link="GtkImageView.html#gtk-image-view-get-black-bg"/>
+    <function name="gtk_image_view_set_show_frame ()" link="GtkImageView.html#gtk-image-view-set-show-frame"/>
+    <function name="gtk_image_view_get_show_frame ()" link="GtkImageView.html#gtk-image-view-get-show-frame"/>
+    <function name="gtk_image_view_set_interpolation ()" link="GtkImageView.html#gtk-image-view-set-interpolation"/>
+    <function name="gtk_image_view_get_interpolation ()" link="GtkImageView.html#gtk-image-view-get-interpolation"/>
+    <function name="gtk_image_view_set_show_cursor ()" link="GtkImageView.html#gtk-image-view-set-show-cursor"/>
+    <function name="gtk_image_view_get_show_cursor ()" link="GtkImageView.html#gtk-image-view-get-show-cursor"/>
+    <function name="gtk_image_view_set_tool ()" link="GtkImageView.html#gtk-image-view-set-tool"/>
+    <function name="gtk_image_view_get_tool ()" link="GtkImageView.html#gtk-image-view-get-tool"/>
+    <function name="gtk_image_view_zoom_in ()" link="GtkImageView.html#gtk-image-view-zoom-in"/>
+    <function name="gtk_image_view_zoom_out ()" link="GtkImageView.html#gtk-image-view-zoom-out"/>
+    <function name="gtk_image_view_damage_pixels ()" link="GtkImageView.html#gtk-image-view-damage-pixels"/>
+    <function name="gtk_image_view_library_version ()" link="GtkImageView.html#gtk-image-view-library-version"/>
+    <function name="The &quot;mouse-wheel-scroll&quot; signal" link="GtkImageView.html#GtkImageView-mouse-wheel-scroll"/>
+    <function name="The &quot;pixbuf-changed&quot; signal" link="GtkImageView.html#GtkImageView-pixbuf-changed"/>
+    <function name="The &quot;scroll&quot; signal" link="GtkImageView.html#GtkImageView-scroll"/>
+    <function name="The &quot;set-fitting&quot; signal" link="GtkImageView.html#GtkImageView-set-fitting"/>
+    <function name="The &quot;set-scroll-adjustments&quot; signal" link="GtkImageView.html#GtkImageView-set-scroll-adjustments"/>
+    <function name="The &quot;set-zoom&quot; signal" link="GtkImageView.html#GtkImageView-set-zoom"/>
+    <function name="The &quot;zoom-changed&quot; signal" link="GtkImageView.html#GtkImageView-zoom-changed"/>
+    <function name="The &quot;zoom-in&quot; signal" link="GtkImageView.html#GtkImageView-zoom-in"/>
+    <function name="The &quot;zoom-out&quot; signal" link="GtkImageView.html#GtkImageView-zoom-out"/>
+    <function name="GdkPixbufDrawOpts" link="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts"/>
+    <function name="GdkPixbufDrawCache" link="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawCache"/>
+    <function name="enum GdkPixbufDrawMethod" link="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawMethod"/>
+    <function name="gdk_pixbuf_draw_cache_new ()" link="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-new"/>
+    <function name="gdk_pixbuf_draw_cache_free ()" link="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-free"/>
+    <function name="gdk_pixbuf_draw_cache_invalidate ()" link="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-invalidate"/>
+    <function name="gdk_pixbuf_draw_cache_draw ()" link="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-draw"/>
+    <function name="gdk_pixbuf_draw_cache_get_method ()" link="gtkimageview-gdkpixbufdrawcache.html#gdk-pixbuf-draw-cache-get-method"/>
+    <function name="gtk_zooms_get_zoom_in ()" link="gtkimageview-gtkzooms.html#gtk-zooms-get-zoom-in"/>
+    <function name="gtk_zooms_get_zoom_out ()" link="gtkimageview-gtkzooms.html#gtk-zooms-get-zoom-out"/>
+    <function name="gtk_zooms_get_min_zoom ()" link="gtkimageview-gtkzooms.html#gtk-zooms-get-min-zoom"/>
+    <function name="gtk_zooms_get_max_zoom ()" link="gtkimageview-gtkzooms.html#gtk-zooms-get-max-zoom"/>
+    <function name="gtk_zooms_clamp_zoom ()" link="gtkimageview-gtkzooms.html#gtk-zooms-clamp-zoom"/>
+  </functions>
+</book>

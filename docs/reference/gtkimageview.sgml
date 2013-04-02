@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
+               "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd" [
+<!ENTITY compiling SYSTEM "compiling.sgml">
+<!ENTITY dirstructure SYSTEM "dirstructure.sgml">
+<!ENTITY sourcecode SYSTEM "sourcecode.sgml">
+<!ENTITY releasehistory SYSTEM "releasehistory.sgml">
+]>
+<book id="index" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <bookinfo>
+        <title>GtkImageView Reference Manual</title>
+        <releaseinfo>for GtkImageView 1.6.4</releaseinfo>
+        <author>
+          <firstname>Björn</firstname>
+          <surname>Lindqvist</surname>
+          <affiliation>
+              <email>bjourne@gmail.com</email>
+          </affiliation>
+        </author>
+    </bookinfo>
+    <chapter id = "overview">
+      <title>Package overview</title>
+      <para>
+        GtkImageView is a simple but full featured image viewer widget
+        for <ulink url = "http://www.gtk.org">GTK</ulink>. Similar to
+        the image viewer panes in <ulink url =
+        "http://gthumb.sourceforge.net">gThumb</ulink> and <ulink url
+        = "http://www.gnome.org/gnome-office/eog.shtml">Eye of
+        GNOME</ulink>. The package is released under the <ulink url =
+        "http://www.gnu.org/licenses/lgpl.html">GNU Lesser General
+        Public License</ulink> (GNU LGPL).
+      </para>
+      &compiling;
+      &dirstructure;
+      &sourcecode;
+      &releasehistory;
+    </chapter>
+    <chapter id = "acknowledgements">
+      <title>Acknowledgements</title>
+      <para>
+        Much of the code in GtkImageView and most of its design comes
+        from the image viewer widget in gThumb. Many thanks to Paolo
+        Bacchilega and the other gThumb developers for letting me
+        relicense the code as LGPL. If you find GtkImageView useful,
+        please remember that it is very much a case of "standing on
+        the shoulders of giants."
+      </para>
+      <para>
+        Also thanks to Udi Fuchs, Ross Burton et al. for providing
+        feedback, improvements and real word testing.
+      </para>
+    </chapter>  
+    <reference>
+        <title>API reference</title>
+        <para>
+          This is the API reference for GtkImageView.
+        </para>
+        <xi:include href = "xml/gtkanimview.xml"/>
+        <xi:include href = "xml/gtkiimagetool.xml"/>
+        <xi:include href = "xml/gtkimagenav.xml"/>
+        <xi:include href = "xml/gtkimagescrollwin.xml"/>
+        <xi:include href = "xml/gtkimagetooldragger.xml"/>
+        <xi:include href = "xml/gtkimagetoolselector.xml"/>
+        <xi:include href = "xml/gtkimageview.xml"/>
+        <xi:include href = "xml/gdkpixbufdrawcache.xml"/>
+        <xi:include href = "xml/gtkzooms.xml"/>
+    </reference>
+</book>

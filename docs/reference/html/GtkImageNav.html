@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkImageNav</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="GtkIImageTool.html" title="GtkIImageTool">
+<link rel="next" href="GtkImageScrollWin.html" title="GtkImageScrollWin">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GtkIImageTool.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="GtkImageScrollWin.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkImageNav.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkImageNav.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkImageNav.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkImageNav.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GtkImageNav.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="GtkImageNav"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkImageNav.top_of_page"></a>GtkImageNav</span></h2>
+<p>GtkImageNav — Navigation window showing a thumbnailed
+overview of a <span class="type">GtkImageView.</span>
+<div class="mediaobject" align="center">
+<img src="navwin-open.png" align="middle"><div class="caption"><span class="emphasis"><em>Screenshot of an active navigation window</em></span></div>
+</div></p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GtkImageNav.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+#define             <a class="link" href="GtkImageNav.html#GTK-IMAGE-NAV-MAX-WIDTH:CAPS" title="GTK_IMAGE_NAV_MAX_WIDTH">GTK_IMAGE_NAV_MAX_WIDTH</a>
+#define             <a class="link" href="GtkImageNav.html#GTK-IMAGE-NAV-MAX-HEIGHT:CAPS" title="GTK_IMAGE_NAV_MAX_HEIGHT">GTK_IMAGE_NAV_MAX_HEIGHT</a>
+                    <a class="link" href="GtkImageNav.html#GtkImageNav-struct" title="GtkImageNav">GtkImageNav</a>;
+GtkWidget *         <a class="link" href="GtkImageNav.html#gtk-image-nav-new" title="gtk_image_nav_new ()">gtk_image_nav_new</a>                   (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+GdkPixbuf *         <a class="link" href="GtkImageNav.html#gtk-image-nav-get-pixbuf" title="gtk_image_nav_get_pixbuf ()">gtk_image_nav_get_pixbuf</a>            (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav);
+void                <a class="link" href="GtkImageNav.html#gtk-image-nav-grab" title="gtk_image_nav_grab ()">gtk_image_nav_grab</a>                  (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav);
+void                <a class="link" href="GtkImageNav.html#gtk-image-nav-release" title="gtk_image_nav_release ()">gtk_image_nav_release</a>               (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav);
+void                <a class="link" href="GtkImageNav.html#gtk-image-nav-show-and-grab" title="gtk_image_nav_show_and_grab ()">gtk_image_nav_show_and_grab</a>         (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav,
+                                                         int center_x,
+                                                         int center_y);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageNav.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkObject
+               +----GtkWidget
+                     +----GtkContainer
+                           +----GtkBin
+                                 +----GtkWindow
+                                       +----GtkImageNav
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageNav.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkImageNav implements
+ AtkImplementorIface and  GtkBuildable.</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageNav.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkImageNav.html#GtkImageNav--view" title='The "view" property'>view</a>"                     <a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>*         : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageNav.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  GtkImageNav is a popup window that shows a downscaled preview of
+  the pixbuf that <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> is showing. The user can drag
+  around a rectangle which indicates the current view of the image.
+</p>
+<p>
+</p>
+<p>
+  This class is used by <a class="link" href="GtkImageScrollWin.html" title="GtkImageScrollWin"><span class="type">GtkImageScrollWin</span></a> itself. It is probably not
+  very useful for clients of this library.
+</p>
+<p>
+</p>
+<p>
+  GtkImageNav has the same keybindings that <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> has. All
+  keypresses that it receives are passed along to the view.
+</p>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageNav.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="GTK-IMAGE-NAV-MAX-WIDTH:CAPS"></a><h3>GTK_IMAGE_NAV_MAX_WIDTH</h3>
+<pre class="programlisting">#define GTK_IMAGE_NAV_MAX_WIDTH			  192
+</pre>
+<p>
+The maximum width of the drawing area in the widget.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GTK-IMAGE-NAV-MAX-HEIGHT:CAPS"></a><h3>GTK_IMAGE_NAV_MAX_HEIGHT</h3>
+<pre class="programlisting">#define GTK_IMAGE_NAV_MAX_HEIGHT          128
+</pre>
+<p>
+The maximum height of the drawing area in the widget.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkImageNav-struct"></a><h3>GtkImageNav</h3>
+<pre class="programlisting">typedef struct _GtkImageNav GtkImageNav;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-nav-new"></a><h3>gtk_image_nav_new ()</h3>
+<pre class="programlisting">GtkWidget *         gtk_image_nav_new                   (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Creates a new <a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a> for showing thumbnails of the view. The
+default values are:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc"><li>pixbuf : <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</li></ul></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a new <a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a> showing the view.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-nav-get-pixbuf"></a><h3>gtk_image_nav_get_pixbuf ()</h3>
+<pre class="programlisting">GdkPixbuf *         gtk_image_nav_get_pixbuf            (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav);</pre>
+<p>
+Returns the downscaled pixbuf of the views pixbuf that this
+<a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a> shows, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> if that pixbuf has not been created
+yet.
+</p>
+<p>
+The pixbuf is by default <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>nav</code></em> :</span></p></td>
+<td> a <span class="type">GtkImageNav.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> the pixbuf in the navigation area this image navigator
+ shows, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> if none exist.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-nav-grab"></a><h3>gtk_image_nav_grab ()</h3>
+<pre class="programlisting">void                gtk_image_nav_grab                  (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav);</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>nav</code></em> :</span></p></td>
+<td>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-nav-release"></a><h3>gtk_image_nav_release ()</h3>
+<pre class="programlisting">void                gtk_image_nav_release               (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav);</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>nav</code></em> :</span></p></td>
+<td>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-nav-show-and-grab"></a><h3>gtk_image_nav_show_and_grab ()</h3>
+<pre class="programlisting">void                gtk_image_nav_show_and_grab         (<a class="link" href="GtkImageNav.html" title="GtkImageNav">GtkImageNav</a> *nav,
+                                                         int center_x,
+                                                         int center_y);</pre>
+<p>
+Show the <a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a> centered around the point (<em class="parameter"><code>center_x</code></em>,
+<em class="parameter"><code>center_y</code></em>) and grab mouse and keyboard events. The grab continues
+until a button release event is received which causes the widget to
+hide.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>nav</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageNav.html" title="GtkImageNav"><span class="type">GtkImageNav</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>center_x</code></em> :</span></p></td>
+<td> x coordinate of center position
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>center_y</code></em> :</span></p></td>
+<td> y coordinate of center position
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageNav.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageNav--view"></a><h3>The <code class="literal">"view"</code> property</h3>
+<pre class="programlisting">  "view"                     <a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>*         : Write / Construct Only</pre>
+<p>Image View to navigate.</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

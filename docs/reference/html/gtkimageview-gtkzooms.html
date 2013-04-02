@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gtkzooms</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="gtkimageview-gdkpixbufdrawcache.html" title="gdkpixbufdrawcache">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gtkimageview-gdkpixbufdrawcache.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td> </td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gtkimageview-gtkzooms.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gtkimageview-gtkzooms.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="gtkimageview-gtkzooms"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gtkimageview-gtkzooms.top_of_page"></a>gtkzooms</span></h2>
+<p>gtkzooms — Functions for dealing with zoom factors</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gtkimageview-gtkzooms.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+gdouble             <a class="link" href="gtkimageview-gtkzooms.html#gtk-zooms-get-zoom-in" title="gtk_zooms_get_zoom_in ()">gtk_zooms_get_zoom_in</a>               (gdouble zoom);
+gdouble             <a class="link" href="gtkimageview-gtkzooms.html#gtk-zooms-get-zoom-out" title="gtk_zooms_get_zoom_out ()">gtk_zooms_get_zoom_out</a>              (gdouble zoom);
+gdouble             <a class="link" href="gtkimageview-gtkzooms.html#gtk-zooms-get-min-zoom" title="gtk_zooms_get_min_zoom ()">gtk_zooms_get_min_zoom</a>              (void);
+gdouble             <a class="link" href="gtkimageview-gtkzooms.html#gtk-zooms-get-max-zoom" title="gtk_zooms_get_max_zoom ()">gtk_zooms_get_max_zoom</a>              (void);
+gdouble             <a class="link" href="gtkimageview-gtkzooms.html#gtk-zooms-clamp-zoom" title="gtk_zooms_clamp_zoom ()">gtk_zooms_clamp_zoom</a>                (gdouble zoom);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="gtkimageview-gtkzooms.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> uses a discrete amount of zoom factors for determining
+  which zoom to set. Using these functions, it is possible to retrieve
+  information and manipulate a zoom factor.
+</p>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="gtkimageview-gtkzooms.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="gtk-zooms-get-zoom-in"></a><h3>gtk_zooms_get_zoom_in ()</h3>
+<pre class="programlisting">gdouble             gtk_zooms_get_zoom_in               (gdouble zoom);</pre>
+<p>
+Returns the zoom factor that is one step larger than the supplied
+zoom factor.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>zoom</code></em> :</span></p></td>
+<td> A zoom factor.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a zoom factor that is one step larger than the supplied
+     one
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-zooms-get-zoom-out"></a><h3>gtk_zooms_get_zoom_out ()</h3>
+<pre class="programlisting">gdouble             gtk_zooms_get_zoom_out              (gdouble zoom);</pre>
+<p>
+Returns the zoom factor that is one step smaller than the supplied
+zoom factor.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>zoom</code></em> :</span></p></td>
+<td> a zoom factor
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> a zoom factor that is one step smaller than the supplied
+     one.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-zooms-get-min-zoom"></a><h3>gtk_zooms_get_min_zoom ()</h3>
+<pre class="programlisting">gdouble             gtk_zooms_get_min_zoom              (void);</pre>
+<p>
+Returns the minimum allowed zoom factor.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The minimal zoom factor.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-zooms-get-max-zoom"></a><h3>gtk_zooms_get_max_zoom ()</h3>
+<pre class="programlisting">gdouble             gtk_zooms_get_max_zoom              (void);</pre>
+<p>
+Returns the maximum allowed zoom factor.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The maximal zoom factor.
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-zooms-clamp-zoom"></a><h3>gtk_zooms_clamp_zoom ()</h3>
+<pre class="programlisting">gdouble             gtk_zooms_clamp_zoom                (gdouble zoom);</pre>
+<p>
+Returns the zoom factor clamped to the minumum and maximum allowed
+value.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>zoom</code></em> :</span></p></td>
+<td> A zoom factor
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The zoom factor clamped to the interval [min, max].
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

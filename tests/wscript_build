@@ -1,0 +1,31 @@
+#! /usr/bin/env python
+import Options
+import glob
+import os.path
+
+def create_program_target(bld, source, is_test = False):
+    obj = bld.new_task_gen('cc', 'program', includes = '..')
+    obj.source = source
+    obj.target = os.path.splitext(source)[0]
+    obj.uselib_local = ['gtkimageview']
+
+    built_basedir = os.path.join(bld.bdir, bld.env.variant())
+    
+    obj.rpath = [os.path.join(built_basedir, 'src')]
+    if is_test:
+        obj.uselib_local += ['testlib']
+        obj.unit_test = True
+        obj.want_to_see_test_output = True
+        obj.want_to_see_test_error = True
+        obj.rpath += [os.path.join(built_basedir, 'tests/testlib')]
+
+if Options.options.tests or Options.commands['check']:
+    tests = [os.path.basename(f) for f in glob.glob('tests/test-*.c')]
+    for target in tests:
+        create_program_target(bld, target, is_test = True)
+    bld.add_subdirs('testlib')
+if Options.options.demos:
+    demos = [os.path.basename(f) for f in glob.glob('tests/ex-*.c')] + \
+        ['interactive.c']
+    for target in demos:
+        create_program_target(bld, target)

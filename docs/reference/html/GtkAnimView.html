@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkAnimView</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="rn01.html" title="API reference">
+<link rel="next" href="GtkIImageTool.html" title="GtkIImageTool">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="rn01.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="GtkIImageTool.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkAnimView.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkAnimView.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkAnimView.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkAnimView.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GtkAnimView.signals" class="shortcut">Signals</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="GtkAnimView"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkAnimView.top_of_page"></a>GtkAnimView</span></h2>
+<p>GtkAnimView — Subclass of <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> capable of playing
+GIF animations.</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GtkAnimView.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GtkAnimView.html#GtkAnimView-struct" title="GtkAnimView">GtkAnimView</a>;
+GtkWidget *         <a class="link" href="GtkAnimView.html#gtk-anim-view-new" title="gtk_anim_view_new ()">gtk_anim_view_new</a>                   (void);
+GdkPixbufAnimation * <a class="link" href="GtkAnimView.html#gtk-anim-view-get-anim" title="gtk_anim_view_get_anim ()">gtk_anim_view_get_anim</a>             (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview);
+void                <a class="link" href="GtkAnimView.html#gtk-anim-view-set-anim" title="gtk_anim_view_set_anim ()">gtk_anim_view_set_anim</a>              (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview,
+                                                         GdkPixbufAnimation *anim);
+void                <a class="link" href="GtkAnimView.html#gtk-anim-view-set-is-playing" title="gtk_anim_view_set_is_playing ()">gtk_anim_view_set_is_playing</a>        (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview,
+                                                         gboolean playing);
+gboolean            <a class="link" href="GtkAnimView.html#gtk-anim-view-get-is-playing" title="gtk_anim_view_get_is_playing ()">gtk_anim_view_get_is_playing</a>        (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview);
+void                <a class="link" href="GtkAnimView.html#gtk-anim-view-step" title="gtk_anim_view_step ()">gtk_anim_view_step</a>                  (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkObject
+               +----GtkWidget
+                     +----<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>
+                           +----GtkAnimView
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkAnimView implements
+ AtkImplementorIface and  GtkBuildable.</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.signals"></a><h2>Signals</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkAnimView.html#GtkAnimView-step" title='The "step" signal'>step</a>"                                           : Run Last / Action
+  "<a class="link" href="GtkAnimView.html#GtkAnimView-toggle-running" title='The "toggle-running" signal'>toggle-running</a>"                                 : Run Last / Action
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  GtkAnimView subclasses GtkImageView. It has the same look and
+  feel as its parent but is also capable of displaying GIF
+  animations.
+</p>
+<p>
+</p>
+<div class="refsect2" lang="en">
+<a name="id2704248"></a><h3>Keybindings</h3>
+<p>
+    GtkAnimView uses a few more keybindings in addition to those used
+    by GtkImageView:
+    </p>
+<table width="100%" border="0" id="id2704258">
+<thead><tr>
+          <th>Keys</th>
+          <th>Corresponding function</th>
+          <th>Description</th>
+        </tr></thead>
+<tbody>
+<tr>
+          <td><code class="literal">GDK_p</code></td>
+          <td><a class="link" href="GtkAnimView.html#gtk-anim-view-set-is-playing" title="gtk_anim_view_set_is_playing ()"><code class="function">gtk_anim_view_set_is_playing()</code></a></td>
+          <td>Stops or resumes the running animation.</td>
+        </tr>
+<tr>
+          <td><code class="literal">GDK_j</code></td>
+          <td><a class="link" href="GtkAnimView.html#gtk-anim-view-step" title="gtk_anim_view_step ()"><code class="function">gtk_anim_view_step()</code></a></td>
+          <td>Steps the animation one frame forward.</td>
+        </tr>
+</tbody>
+</table>
+<p>  
+  </p>
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkAnimView-struct"></a><h3>GtkAnimView</h3>
+<pre class="programlisting">typedef struct _GtkAnimView GtkAnimView;</pre>
+<p>
+GtkAnimView is a subclass of <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> that provies facilities
+for displaying and controlling an animation.</p>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-anim-view-new"></a><h3>gtk_anim_view_new ()</h3>
+<pre class="programlisting">GtkWidget *         gtk_anim_view_new                   (void);</pre>
+<p>
+Creates a new <a class="link" href="GtkAnimView.html" title="GtkAnimView"><span class="type">GtkAnimView</span></a> with default values. The default values
+are:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li>anim : <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</li>
+<li>is_playing : <code class="literal">FALSE</code>
+</li>
+</ul></div>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A new <span class="type">GtkAnimView.</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-anim-view-get-anim"></a><h3>gtk_anim_view_get_anim ()</h3>
+<pre class="programlisting">GdkPixbufAnimation * gtk_anim_view_get_anim             (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview);</pre>
+<p>
+Returns the current animation of the view.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> a <span class="type">GtkAnimView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> the current animation 
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-anim-view-set-anim"></a><h3>gtk_anim_view_set_anim ()</h3>
+<pre class="programlisting">void                gtk_anim_view_set_anim              (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview,
+                                                         GdkPixbufAnimation *anim);</pre>
+<p>
+Sets the pixbuf animation to play, or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> to not play any
+animation.
+</p>
+<p>
+If the animation is a static image or only has one frame, then the
+static image will be displayed instead. If more frames are loaded
+into the animation, then <a class="link" href="GtkAnimView.html" title="GtkAnimView"><span class="type">GtkAnimView</span></a> will automatically animate to
+those frames.
+</p>
+<p>
+The effect of this method is analoguous to
+<a class="link" href="GtkImageView.html#gtk-image-view-set-pixbuf" title="gtk_image_view_set_pixbuf ()"><code class="function">gtk_image_view_set_pixbuf()</code></a>. Fit mode is reset to
+<code class="literal">GTK_FIT_SIZE_IF_LARGER</code> so that the whole area of the animation
+fits in the view. Three signals are emitted, first the
+<a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> will emit ::zoom-changed and then ::pixbuf-changed,
+second, <a class="link" href="GtkAnimView.html" title="GtkAnimView"><span class="type">GtkAnimView</span></a> itself will emit ::anim-changed.
+</p>
+<p>
+The default pixbuf animation is <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> A <span class="type">GtkAnimView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>anim</code></em> :</span></p></td>
+<td> A pixbuf animation to play.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-anim-view-set-is-playing"></a><h3>gtk_anim_view_set_is_playing ()</h3>
+<pre class="programlisting">void                gtk_anim_view_set_is_playing        (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview,
+                                                         gboolean playing);</pre>
+<p>
+Sets whether the animation should play or not. If there is no
+current animation this method does not have any effect.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>playing</code></em> :</span></p></td>
+<td> <code class="literal">TRUE</code> to play the animation, <code class="literal">FALSE</code> otherwise
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-anim-view-get-is-playing"></a><h3>gtk_anim_view_get_is_playing ()</h3>
+<pre class="programlisting">gboolean            gtk_anim_view_get_is_playing        (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview);</pre>
+<p>
+Returns whether the animation is playing or not. If there is no
+current animation, this method will always returns <code class="literal">FALSE</code>.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if an animation is playing, <code class="literal">FALSE</code> otherwise.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-anim-view-step"></a><h3>gtk_anim_view_step ()</h3>
+<pre class="programlisting">void                gtk_anim_view_step                  (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview);</pre>
+<p>
+Steps the animation one frame forward. If the animation is playing
+it will be stopped. Will it wrap around if the animation is at its
+last frame?</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> A <span class="type">GtkImageView.</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkAnimView-step"></a><h3>The <code class="literal">"step"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview,
+                                                        gpointer     user_data)      : Run Last / Action</pre>
+<p>
+Steps the animation one frame forward. If the animation is
+playing it will first be stopped. ::step is a keybinding signal
+emitted when <code class="literal">GDK_j</code> is pressed on the widget and should not be
+used by clients of this library.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkAnimView.html" title="GtkAnimView"><span class="type">GtkAnimView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="GtkAnimView-toggle-running"></a><h3>The <code class="literal">"toggle-running"</code> signal</h3>
+<pre class="programlisting">void                user_function                      (<a class="link" href="GtkAnimView.html" title="GtkAnimView">GtkAnimView</a> *aview,
+                                                        gpointer     user_data)      : Run Last / Action</pre>
+<p>
+Stops the animation if it was playing or resumes it, if it was
+playing. ::toggle-running is a keybinding signal emitted when
+<code class="literal">GDK_p</code> is pressed on the widget and should not be used by
+clients of this library.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>aview</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkAnimView.html" title="GtkAnimView"><span class="type">GtkAnimView</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>user data set when the signal handler was connected.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkAnimView.see-also"></a><h2>See Also</h2>
+<a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>, The
+<code class="filename">./tests/ex-anim.c</code> program for an example of
+how this widget is used
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

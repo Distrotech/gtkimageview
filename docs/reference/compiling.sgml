@@ -1,0 +1,79 @@
+<refentry id = "compiling" revision="15 April 2007">
+  <refmeta>
+    <refentrytitle>Building GtkImageView</refentrytitle>
+  </refmeta>
+  <refnamediv>
+    <refname>Building GtkImageView</refname>
+    <refpurpose>
+      How to compile and install GtkImageView.
+    </refpurpose>
+  </refnamediv>  
+  <refsect1>
+    <para>
+      To compile and install GtkImageView, follow these steps:
+      <literallayout>
+        <userinput>$ ./configure # Add --enable-gtk-doc to build the documentation</userinput>
+        <userinput>$ make</userinput>
+        <userinput>$ make install</userinput>
+      </literallayout>
+      Optionally, you may want to run <userinput>make
+      check</userinput> to build the testsuite. You can verify that
+      installation succeded by running pkg-config:
+      <literallayout>
+        <userinput>$ pkg-config --modversion gtkimageview</userinput>
+        <userinput>1.6.4</userinput>
+      </literallayout>
+    </para>
+    <refsect2>
+      <title>Building with waf</title>
+      <para>
+        GtkImageView can also be built using the build tool <ulink src
+        = "http://code.google.com/p/waf/">waf</ulink>. The waf binary
+        is distributed with GtkImageView, so the only prerequisite to
+        using it is that <ulink src =
+        "http://www.python.org/">Python</ulink> 2.4 or later is
+        installed. Waf is the offically preferred way to build
+        GtkImageView with, so please try it out. Autotools still works
+        ofcourse.
+      </para>
+      <para>
+        These commands builds and installs GtkImageView with waf:
+        <literallayout>
+          <userinput>$ ./waf configure # Add --enable-gtk-doc to build the documentation</userinput>
+          <userinput>$ ./waf build</userinput>
+          <userinput>$ ./waf install</userinput>
+        </literallayout>
+        The test programs and demos are built by specifying specific
+        build targets to <command>waf build</command>:
+        <literallayout>
+          <userinput>$ ./waf build --demos # Builds demos</userinput>
+          <userinput>$ ./waf build --tests # Builds tests</userinput>
+        </literallayout>
+        All the binaries are, by default, placed in
+        the <filename>build/default/tests</filename> directory.
+      </para>  
+    </refsect2>  
+  </refsect1>
+  <refsect2>
+    <title>Known problems</title>
+    <para>
+      During compilation with GCC version 4.2.1 or newer, you may get
+      errors similar to the following:
+      <literallayout>
+        <userinput>$ make</userinput>
+        <userinput>...</userinput>
+        <userinput>gutils.h:316: warning: C99 inline functions are not supported; using GNU89</userinput>
+        <userinput>gutils.h:316: warning: to disable this warning use -fgnu89-inline or the gnu_inline function attribute</userinput>
+      </literallayout>
+      These warnings are caused by a change in the meaning of
+      the <function>inline</function> keyword in recent versions of
+      GCC. But GLib has not yet adapted to the change. Fortunately,
+      the fix is simple. Invoke configure like this:
+      <literallayout>
+        <userinput>$ CFLAGS=-fgnu89-inline ./configure</userinput>
+      </literallayout>
+      Note that the <option>-fgnu89-inline</option> is only recognized
+      in GCC 4.2.1 and above.
+    </para>  
+  </refsect2>  
+</refentry>

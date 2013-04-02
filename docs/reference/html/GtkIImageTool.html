@@ -1,0 +1,344 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkIImageTool</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="GtkAnimView.html" title="GtkAnimView">
+<link rel="next" href="GtkImageNav.html" title="GtkImageNav">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GtkAnimView.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="GtkImageNav.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkIImageTool.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkIImageTool.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkIImageTool.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkIImageTool.implementations" class="shortcut">Known Implementations</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="GtkIImageTool"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkIImageTool.top_of_page"></a>GtkIImageTool</span></h2>
+<p>GtkIImageTool — Interface for objects capable of being used as
+tools by <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a></p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GtkIImageTool.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GtkIImageTool.html#GtkIImageTool-struct" title="GtkIImageTool">GtkIImageTool</a>;
+gboolean            <a class="link" href="GtkIImageTool.html#gtk-iimage-tool-button-press" title="gtk_iimage_tool_button_press ()">gtk_iimage_tool_button_press</a>        (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         GdkEventButton *ev);
+gboolean            <a class="link" href="GtkIImageTool.html#gtk-iimage-tool-button-release" title="gtk_iimage_tool_button_release ()">gtk_iimage_tool_button_release</a>      (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         GdkEventButton *ev);
+gboolean            <a class="link" href="GtkIImageTool.html#gtk-iimage-tool-motion-notify" title="gtk_iimage_tool_motion_notify ()">gtk_iimage_tool_motion_notify</a>       (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         GdkEventMotion *ev);
+void                <a class="link" href="GtkIImageTool.html#gtk-iimage-tool-pixbuf-changed" title="gtk_iimage_tool_pixbuf_changed ()">gtk_iimage_tool_pixbuf_changed</a>      (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         gboolean reset_fit,
+                                                         GdkRectangle *rect);
+void                <a class="link" href="GtkIImageTool.html#gtk-iimage-tool-paint-image" title="gtk_iimage_tool_paint_image ()">gtk_iimage_tool_paint_image</a>         (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *opts,
+                                                         GdkDrawable *drawable);
+GdkCursor *         <a class="link" href="GtkIImageTool.html#gtk-iimage-tool-cursor-at-point" title="gtk_iimage_tool_cursor_at_point ()">gtk_iimage_tool_cursor_at_point</a>     (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         int x,
+                                                         int y);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkIImageTool.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GInterface
+   +----GtkIImageTool
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkIImageTool.implementations"></a><h2>Known Implementations</h2>
+<p>
+GtkIImageTool is implemented by
+ <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger">GtkImageToolDragger</a>,  GtkImageToolPainter and  <a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector">GtkImageToolSelector</a>.</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkIImageTool.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  GtkIImageTool is an interface that defines how GtkImageView
+  interacts with objects that acts as tools. GtkImageView delegates
+  many of its most important tasks (such as drawing) to its tool which
+  carries out all the hard work. The GtkImageView package comes with
+  two tools; <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger"><span class="type">GtkImageToolDragger</span></a> and <a class="link" href="GtkImageToolSelector.html" title="GtkImageToolSelector"><span class="type">GtkImageToolSelector</span></a>, but by
+  implementing your own tool it is possible to extend GtkImageView to
+  do stuff its author (thats me) didn't imagine.
+</p>
+<p>
+</p>
+<p>
+  GtkImageView uses <a class="link" href="GtkImageToolDragger.html" title="GtkImageToolDragger"><span class="type">GtkImageToolDragger</span></a> by default, as that tool is
+  he most generally useful one. However, it is trivial to make it use
+  another tool.
+  </p>
+<div class="informalexample"><pre class="programlisting">
+      GtkImageView *view = GTK_IMAGE_VIEW (gtk_image_view_new ());
+      GtkIImageTool *tool = gtk_image_tool_selector_new (view);
+      gtk_image_view_set_tool (view, tool);
+    </pre></div>
+<p>
+  Using the above code makes the view use the selector tool instead of
+  the default dragger tool.
+</p>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkIImageTool.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkIImageTool-struct"></a><h3>GtkIImageTool</h3>
+<pre class="programlisting">typedef struct _GtkIImageTool GtkIImageTool;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-iimage-tool-button-press"></a><h3>gtk_iimage_tool_button_press ()</h3>
+<pre class="programlisting">gboolean            gtk_iimage_tool_button_press        (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         GdkEventButton *ev);</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>ev</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-iimage-tool-button-release"></a><h3>gtk_iimage_tool_button_release ()</h3>
+<pre class="programlisting">gboolean            gtk_iimage_tool_button_release      (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         GdkEventButton *ev);</pre>
+<p>
+Handles a <code class="literal">GdkEventButton</code> event of a button release. The
+implementing function should return <code class="literal">TRUE</code> if it handled the event,
+for examply by releasing the grab, and <code class="literal">FALSE</code> otherwise.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td> the tool
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>ev</code></em> :</span></p></td>
+<td> a <code class="literal">GdkEventButton</code> event
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the event was handled, <code class="literal">FALSE</code> otherwise
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-iimage-tool-motion-notify"></a><h3>gtk_iimage_tool_motion_notify ()</h3>
+<pre class="programlisting">gboolean            gtk_iimage_tool_motion_notify       (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         GdkEventMotion *ev);</pre>
+<p>
+Handles a <code class="literal">GdkEventMotion</code> event. The implementing function should
+return <code class="literal">TRUE</code> if it handled the event and <code class="literal">FALSE</code> otherwise.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td> the tool
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>ev</code></em> :</span></p></td>
+<td> a <code class="literal">GdkEventMotion</code> event
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> <code class="literal">TRUE</code> if the event was handled, <code class="literal">FALSE</code> otherwise
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-iimage-tool-pixbuf-changed"></a><h3>gtk_iimage_tool_pixbuf_changed ()</h3>
+<pre class="programlisting">void                gtk_iimage_tool_pixbuf_changed      (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         gboolean reset_fit,
+                                                         GdkRectangle *rect);</pre>
+<p>
+Indiate to the tool that either a part of, or the whole pixbuf that
+the image view shows has changed. This method is called by the view
+whenever its pixbuf or its tool changes. That is, when any of the
+following methods are used:
+</p>
+<p>
+</p>
+<div class="itemizedlist"><ul type="disc">
+<li><a class="link" href="GtkImageView.html#gtk-image-view-set-pixbuf" title="gtk_image_view_set_pixbuf ()"><code class="function">gtk_image_view_set_pixbuf()</code></a></li>
+<li><a class="link" href="GtkImageView.html#gtk-image-view-set-tool" title="gtk_image_view_set_tool ()"><code class="function">gtk_image_view_set_tool()</code></a></li>
+<li><a class="link" href="GtkImageView.html#gtk-image-view-damage-pixels" title="gtk_image_view_damage_pixels ()"><code class="function">gtk_image_view_damage_pixels()</code></a></li>
+</ul></div>
+<p>
+</p>
+<p>
+If the <em class="parameter"><code>reset_fit</code></em> parameter is <code class="literal">TRUE</code>, it means that a new pixbuf
+has been loaded into the view. <em class="parameter"><code>rect</code></em> is a rectangle in image space
+coordinates that indicates which rectangular region of the pixbufs
+pixels that is modified. If <em class="parameter"><code>rect</code></em> is <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>, then all of the pixbuf
+has changed. See also GtkImageView::pixbuf-changed.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td> the tool
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>reset_fit</code></em> :</span></p></td>
+<td> whether the view is resetting its fit mode or not
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rect</code></em> :</span></p></td>
+<td> rectangle containing the changed area or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-iimage-tool-paint-image"></a><h3>gtk_iimage_tool_paint_image ()</h3>
+<pre class="programlisting">void                gtk_iimage_tool_paint_image         (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts">GdkPixbufDrawOpts</a> *opts,
+                                                         GdkDrawable *drawable);</pre>
+<p>
+Called whenever the image view decides that any part of the image
+it shows needs to be redrawn.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td> the tool
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>opts</code></em> :</span></p></td>
+<td> the <a class="link" href="gtkimageview-gdkpixbufdrawcache.html#GdkPixbufDrawOpts" title="GdkPixbufDrawOpts"><span class="type">GdkPixbufDrawOpts</span></a> to use in this draw
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>drawable</code></em> :</span></p></td>
+<td> a <span class="type">GdkDrawable</span> to draw on
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-iimage-tool-cursor-at-point"></a><h3>gtk_iimage_tool_cursor_at_point ()</h3>
+<pre class="programlisting">GdkCursor *         gtk_iimage_tool_cursor_at_point     (<a class="link" href="GtkIImageTool.html" title="GtkIImageTool">GtkIImageTool</a> *tool,
+                                                         int x,
+                                                         int y);</pre>
+<p>
+Ask the tool what cursor it wants displayed. E.g. if the tool keeps
+track of image maps in the image, then this method can be
+implemented to return an appropriate cursor when the mouse pointer
+hovers at the specified point in the widget.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>tool</code></em> :</span></p></td>
+<td>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>x</code></em> :</span></p></td>
+<td> the mouse pointers X-coordinate
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>y</code></em> :</span></p></td>
+<td> the mouse pointers Y-coordinate
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> The appropriate cursor or <a href="../liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> if the widgets default
+  cursor should be used.
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkIImageTool.see-also"></a><h2>See Also</h2>
+<a class="ulink" href="http://developer.gnome.org/doc/API/2.0/gobject/gtype-non-instantiable-classed.html" target="_top">Non-instantiable
+classed types: Interfaces</a>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>

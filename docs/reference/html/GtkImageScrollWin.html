@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkImageScrollWin</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.73.2">
+<link rel="start" href="index.html" title="GtkImageView Reference Manual">
+<link rel="up" href="rn01.html" title="API reference">
+<link rel="prev" href="GtkImageNav.html" title="GtkImageNav">
+<link rel="next" href="GtkImageToolDragger.html" title="GtkImageToolDragger">
+<meta name="generator" content="GTK-Doc V1.12 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="chapter" href="overview.html" title="Package overview">
+<link rel="chapter" href="acknowledgements.html" title="Acknowledgements">
+<link rel="reference" href="rn01.html" title="API reference">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="GtkImageNav.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="rn01.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GtkImageView Reference Manual</th>
+<td><a accesskey="n" href="GtkImageToolDragger.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GtkImageScrollWin.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GtkImageScrollWin.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GtkImageScrollWin.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GtkImageScrollWin.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GtkImageScrollWin.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry" lang="en">
+<a name="GtkImageScrollWin"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkImageScrollWin.top_of_page"></a>GtkImageScrollWin</span></h2>
+<p>GtkImageScrollWin — Scrollable window suitable for <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a></p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GtkImageScrollWin.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">
+                    <a class="link" href="GtkImageScrollWin.html#GtkImageScrollWin-struct" title="GtkImageScrollWin">GtkImageScrollWin</a>;
+GtkWidget *         <a class="link" href="GtkImageScrollWin.html#gtk-image-scroll-win-new" title="gtk_image_scroll_win_new ()">gtk_image_scroll_win_new</a>            (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GInitiallyUnowned
+         +----GtkObject
+               +----GtkWidget
+                     +----GtkContainer
+                           +----GtkTable
+                                 +----GtkImageScrollWin
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkImageScrollWin implements
+ AtkImplementorIface and  GtkBuildable.</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GtkImageScrollWin.html#GtkImageScrollWin--view" title='The "view" property'>view</a>"                     <a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>*         : Write / Construct Only
+</pre>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.description"></a><h2>Description</h2>
+<p>
+</p>
+<p>
+  <a class="link" href="GtkImageScrollWin.html" title="GtkImageScrollWin"><span class="type">GtkImageScrollWin</span></a> provides a widget similar in appearance to
+  GtkScrollableWindow that is more suitable for displaying
+  <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a>'s.
+</p>
+<p>
+</p>
+<div class="refsect2" lang="en">
+<a name="id2795038"></a><h3>WTF!</h3>
+<p>
+    Moo
+  </p>
+</div>
+<p>
+</p>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.details"></a><h2>Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageScrollWin-struct"></a><h3>GtkImageScrollWin</h3>
+<pre class="programlisting">typedef struct _GtkImageScrollWin GtkImageScrollWin;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2" lang="en">
+<a name="gtk-image-scroll-win-new"></a><h3>gtk_image_scroll_win_new ()</h3>
+<pre class="programlisting">GtkWidget *         gtk_image_scroll_win_new            (<a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a> *view);</pre>
+<p>
+Creates a new <a class="link" href="GtkImageScrollWin.html" title="GtkImageScrollWin"><span class="type">GtkImageScrollWin</span></a> containing the <span class="type">GtkImageView.</span>
+</p>
+<p>
+The widget is built using four subwidgets arranged inside a
+<span class="type">GtkTable</span> with two columns and two rows. Two scrollbars, one
+navigator button (the decorations) and one <span class="type">GtkImageView.</span>
+</p>
+<p>
+When the <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> fits inside the window, the decorations are
+hidden.</p>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>view</code></em> :</span></p></td>
+<td> a <a class="link" href="GtkImageView.html" title="GtkImageView"><span class="type">GtkImageView</span></a> to show.
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td> A new <span class="type">GtkImageScrollWin.</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.property-details"></a><h2>Property Details</h2>
+<div class="refsect2" lang="en">
+<a name="GtkImageScrollWin--view"></a><h3>The <code class="literal">"view"</code> property</h3>
+<pre class="programlisting">  "view"                     <a class="link" href="GtkImageView.html" title="GtkImageView">GtkImageView</a>*         : Write / Construct Only</pre>
+<p>Image View to navigate.</p>
+</div>
+</div>
+<div class="refsect1" lang="en">
+<a name="GtkImageScrollWin.see-also"></a><h2>See Also</h2>
+<a class="ulink" href="http://developer.gnome.org/doc/API/2.0/gtk/GtkScrolledWindow.html" target="_top">GtkScrolledWindow</a>,
+the GTK widget that GtkImageScrollWin mimics.
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.12</div>
+</body>
+</html>
