@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Gtkimageview by Distrotech</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Gtkimageview</h1>
+          <h2>Mirror of git://git.gnome.org/gtkimageview</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/Distrotech/gtkimageview/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/Distrotech/gtkimageview/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/Distrotech/gtkimageview" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1></h1>
+
+<h1>
+<a name="gtkimageview" class="anchor" href="#gtkimageview"><span class="octicon octicon-link"></span></a>GtkImageView</h1>
+
+<p>Copyright © 2007-2008 Björn Lindqvist <a href="mailto:bjourne@gmail.com">bjourne@gmail.com</a></p>
+
+<p>This is the README file for the GtkImageView widget.</p>
+
+<p>GtkImageView is a widget that provides a zoomable and panable view of
+a GdkPixbuf. It is intended to be usable in most types of image
+viewing applications.</p>
+
+<h1>
+<a name="compilation" class="anchor" href="#compilation"><span class="octicon octicon-link"></span></a>Compilation</h1>
+
+<p>The usual business:</p>
+
+<pre><code>$ ./configure --prefix=/some/prefix
+$ make
+$ make install
+</code></pre>
+
+<p>You can also use the --enable-gtk-doc configure argument to enable
+building of API documentation.</p>
+
+<p>Alternatively, GtkImageView can be built with waf:</p>
+
+<pre><code>$ ./waf configure
+$ ./waf build
+$ ./waf install
+</code></pre>
+
+<p>Because GtkImageView uses c99, you must use a version of gcc newer
+than 2.96. The gnome-common module must also be installed.</p>
+
+<h1>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>Todo</h1>
+
+<ul>
+<li>Maybe make rotations work correctly.</li>
+<li>Implement shifted selection rectangle moving and resizing.</li>
+</ul><h1>
+<a name="announcement" class="anchor" href="#announcement"><span class="octicon octicon-link"></span></a>Announcement</h1>
+
+<p>(To be posted to the following mailing lists periodically:</p>
+
+<ul>
+<li><a href="mailto:gnome-announce-list@gnome.org">gnome-announce-list@gnome.org</a></li>
+<li><a href="mailto:gnome-list@gnome.org">gnome-list@gnome.org</a></li>
+</ul><p>Subject: [ANN] GtkImageView 1.6.4 - Image viewer widget for GTK+
+)</p>
+
+<p>I'm pleased to finally announce GtkImageView 1.6.4!</p>
+
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
+
+<p>GtkImageView is a simple image viewer widget for GTK+. Similar to the
+image viewer panes in gThumb or Eye of Gnome. It makes writing image
+viewing and editing applications easy. Among its features are:</p>
+
+<ul>
+<li>Mouse and keyboard zooming.</li>
+<li>Scrolling and dragging.</li>
+<li>Adjustable interpolation.</li>
+<li>Fullscreen mode.</li>
+<li>GIF animation support.</li>
+<li>Ability to make selections.</li>
+<li>Extensible using a tool system.</li>
+</ul><p>Bindings exists for Perl and Python.</p>
+
+<h2>
+<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h2>
+
+<p>Check it out from Subversion:</p>
+
+<pre><code>svn co http://publicsvn.bjourne.webfactional.com/gtkimageview
+</code></pre>
+
+<p>Or download the latest release tarball:</p>
+
+<pre><code>http://trac.bjourne.webfactional.com/chrome/common/releases/gtkimageview-1.6.4.tar.gz
+</code></pre>
+
+<p>API documentation can be found online:</p>
+
+<pre><code>http://trac.bjourne.webfactional.com/chrome/common/gtkimageview-docs/
+</code></pre>
+
+<p>Or by browsing to the ./docs/reference/html/index.html file.</p>
+
+<p>Project website: <a href="http://trac.bjourne.webfactional.com">http://trac.bjourne.webfactional.com</a></p>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>Here is the canonical example for using the widget::</p>
+
+<pre><code>#include &lt;gtkimageview/gtkimagescrollwin.h&gt;
+#include &lt;gtkimageview/gtkimageview.h&gt;
+...
+GtkWidget *view = gtk_image_view_new ();
+GtkWidget *scroll = gtk_image_scroll_win_new (GTK_IMAGE_VIEW (view));
+
+/* Where "box" is a GtkBox already part of your layout. */
+gtk_box_pack_start (GTK_BOX (box), scroll, TRUE, TRUE, 0);
+
+GdkPixbuf *pixbuf = gdk_pixbuf_new_from_file ("someimage.png", NULL);
+gtk_image_view_set_pixbuf (GTK_IMAGE_VIEW (view), pixbuf, TRUE);
+</code></pre>
+
+<h2>
+<a name="future" class="anchor" href="#future"><span class="octicon octicon-link"></span></a>Future</h2>
+
+<ul>
+<li>Gtk# bindings.</li>
+<li>Haskell bindings.</li>
+</ul>
+        </section>
+
+        <footer>
+          Gtkimageview is maintained by <a href="https://github.com/Distrotech">Distrotech</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
